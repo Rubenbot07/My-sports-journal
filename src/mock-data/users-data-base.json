@@ -1,0 +1,65 @@
+[
+    {
+      "id": 1,
+      "name": "Sofia Ramirez",
+      "email": "sofia.ramirez@example.com",
+      "role": "admin",
+      "createdAt": "2025-01-10",
+      "status": "active",
+      "password": "admin123"
+    },
+    {
+      "id": 2,
+      "name": "David Gonzalez",
+      "email": "david.gonzalez@example.com",
+      "role": "editor",
+      "createdAt": "2025-02-05",
+      "status": "active",
+      "password": "editme"
+    },
+    {
+      "id": 3,
+      "name": "Laura Martinez",
+      "email": "laura.martinez@example.com",
+      "role": "editor",
+      "createdAt": "2025-03-01",
+      "status": "active",
+      "password": "editor22"
+    },
+    {
+      "id": 4,
+      "name": "Carlos Perez",
+      "email": "carlos.perez@example.com",
+      "role": "reader",
+      "createdAt": "2025-03-15",
+      "status": "active",
+      "password": "reader01"
+    },
+    {
+      "id": 5,
+      "name": "Emily Johnson",
+      "email": "emily.johnson@example.com",
+      "role": "reader",
+      "createdAt": "2025-03-20",
+      "status": "inactive",
+      "password": "mypassword"
+    },
+    {
+      "id": 6,
+      "name": "Michael Chen",
+      "email": "michael.chen@example.com",
+      "role": "admin",
+      "createdAt": "2025-03-25",
+      "status": "active",
+      "password": "admin42"
+    },
+    {
+      "id": 7,
+      "name": "Sara Lopez",
+      "email": "sara.lopez@example.com",
+      "role": "reader",
+      "createdAt": "2025-04-01",
+      "status": "active",
+      "password": "sara123"
+    }
+  ]
