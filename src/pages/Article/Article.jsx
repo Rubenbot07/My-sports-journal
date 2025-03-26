@@ -20,11 +20,16 @@ export const Article = () => {
             {
                 auth?.role === 'admin' && (
                     <>
-                        <button className='bg-red-500 text-white p-2 rounded-lg'>
+                        <button
+                            onClick={() => auth.deleteArticle(currentArticle.id)}
+                            className='bg-red-500 text-white p-2 rounded-lg'
+                        >
                             Delete
                         </button>
                         <button className='bg-green-500 text-white p-2 rounded-lg'>
-                            Edit
+                            <Link to={`/articles/edit/${currentArticle.id}`}>
+                                Edit
+                            </Link>
                         </button>
                     </>
                 )

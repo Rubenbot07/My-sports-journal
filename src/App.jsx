@@ -7,6 +7,7 @@ import { SignUp } from './pages/SignUp'
 import { Author } from './pages/Author'
 import { Profile } from './pages/Profile'
 import { Layout } from './components/Layout'
+import { EditArticleForm } from './components/EditArticleForm'
 import { UserProvider, useAuth } from './context/UserContext'
 import { MostPopular } from './pages/MostPopular'
 function App() {
@@ -61,6 +62,17 @@ function App() {
         path: '/authors/:authorId',  
         element: <Author />
       },
+      ...(auth.role === 'admin' || auth.role === 'editor' ? [
+        {
+          path: '/articles/edit/:articleId',  
+          element: <EditArticleForm />
+        },
+      ] : []
+      ),
+      {
+        path: '/articles/edit',
+        element: <Home />
+      }
     ])
   }
 

@@ -1,6 +1,7 @@
 import {  createContext, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import usersData from '../mock-data/users-data-base.json'
+import Articles from '../mock-data/sports-articles.json'
 
 export const UserContext = createContext();
 
@@ -30,7 +31,20 @@ export const UserProvider = ({ children }) => {
         navigate('/')
     }
 
-    const auth = { user, setUser, login, logout, wrongUser, role }
+    const deleteArticle = (articleId) => {
+        const articleIndex = Articles.findIndex(article => article.id === articleId)
+        Articles.splice(articleIndex, 1)
+        navigate('/')
+    }
+
+    const editArticle = (articleId, title, author, publishedDate, content) => {
+        const articleIdParsed = parseInt(articleId)
+        const articleIndex = Articles.findIndex(article =>  article.id === articleIdParsed)
+        Articles.splice(articleIndex, 1, { id: articleIdParsed, title: title, author: author, publishedDate: publishedDate, content: content })
+        console.log(Articles)
+        navigate(`/articles/${articleId}`)
+    }
+    const auth = { user, setUser, login, logout, wrongUser, role, deleteArticle, editArticle }
     return (
         <UserContext.Provider value={auth} >
             {children}
