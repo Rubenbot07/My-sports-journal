@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../../context/UserContext';
 export const Article = () => {
     const auth = useAuth()
-    console.log(auth.role === 'admin')
     const { articleId } = useParams();
     const currentArticle = Articles.find(article => article.id === parseInt(articleId));
     return (
@@ -16,7 +15,13 @@ export const Article = () => {
                     {currentArticle.author}
                 </Link>
             </h3>
-            <button onClick={() => auth.addFavorite(currentArticle.id)} className='bg-blue-500 text-white p-2 rounded-lg'>Add To Favorites</button>
+            {
+                auth.favorites.some(favorite => favorite.id === currentArticle.id) ? (
+                    <button onClick={() => auth.handleFavorites(currentArticle.id)} className='bg-red-500 text-white p-2 rounded-lg'>Remove From Favorites</button>
+                )  : (
+                    <button onClick={() => auth.handleFavorites(currentArticle.id)} className='bg-blue-500 text-white p-2 rounded-lg'>Add To Favorites</button>
+                )
+            }
 
             {
                 auth?.role === 'admin' && (

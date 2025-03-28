@@ -9,9 +9,9 @@ export const PrivateRoute = ({ children, roles }) => {
         return <Navigate to='/login' state={{ from: location }} />
     }
 
-    // if (roles && !roles.includes(auth.role)) {
-    //     return <Navigate to='/' />
-    // }
+    if (roles && !roles.includes(auth.role)) {
+        return <Navigate to='/' />
+    }
 
     return children
 }

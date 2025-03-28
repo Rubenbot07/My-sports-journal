@@ -1,6 +1,6 @@
 import {  BrowserRouter, useRoutes } from 'react-router'
 import { Home } from './pages/Home'
-import { Article } from './pages/Article/Article'
+import { Article } from './pages/Article'
 import { Login } from './pages/LogIn'
 import { About } from './pages/About'
 import { SignUp } from './pages/SignUp'

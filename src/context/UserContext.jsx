@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [role, setRole] = useState(null)
     const [wrongUser, setWrongUser] = useState(false)
+    const [favorites, setFavorites] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
     const login = ({ username, userPassword }) => {
@@ -45,12 +46,18 @@ export const UserProvider = ({ children }) => {
         console.log(Articles)
         navigate(`/articles/${articleId}`)
     }
-    const addFavorite = (articleId) => {
+    const handleFavorites = (articleId) => {
         if(!user) {
             navigate('/login', { state: { from: location } })
             return
         }
-        console.log('Add to favorites', articleId)
+        if (favorites.some(favorite => favorite.id === articleId)) {
+            const updatedFavorites = favorites.filter(favorite => favorite.id !== articleId)
+            setFavorites(updatedFavorites)
+            return
+        }
+        const userFavorite = Articles.find(article => article.id === articleId)
+        setFavorites(prevFavorites => [...prevFavorites, userFavorite])
     }
 
     const auth = { 
@@ -62,7 +69,8 @@ export const UserProvider = ({ children }) => {
         role,
         deleteArticle,
         editArticle,
-        addFavorite 
+        favorites,
+        handleFavorites
     }
     return (
         <UserContext.Provider value={auth} >
