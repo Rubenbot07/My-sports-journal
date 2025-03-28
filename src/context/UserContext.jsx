@@ -1,16 +1,16 @@
 import {  createContext, useState, useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import usersData from '../mock-data/users-data-base.json'
 import Articles from '../mock-data/sports-articles.json'
 
 export const UserContext = createContext();
 
-
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
-    const [role, setRole] = useState(null)
+    const [user, setUser] = useState('Ruben')
+    const [role, setRole] = useState('admin')
     const [wrongUser, setWrongUser] = useState(false)
     const navigate = useNavigate()
+    const location = useLocation()
     const login = ({ username, userPassword }) => {
         const user = usersData.find(user => user.name === username)
         const userDataPassword = user?.password === userPassword
@@ -23,11 +23,12 @@ export const UserProvider = ({ children }) => {
         setUser(username)
         setRole(user.role)
         setWrongUser(false)
-        navigate('/')
+        navigate(location.state?.from || '/')
     }
 
     const logout = () => {
         setUser(null)
+        setRole(null)
         navigate('/')
     }
 
@@ -44,7 +45,25 @@ export const UserProvider = ({ children }) => {
         console.log(Articles)
         navigate(`/articles/${articleId}`)
     }
-    const auth = { user, setUser, login, logout, wrongUser, role, deleteArticle, editArticle }
+    const addFavorite = (articleId) => {
+        if(!user) {
+            navigate('/login', { state: { from: location.pathname } })
+            return
+        }
+        console.log('Add to favorites', articleId)
+    }
+
+    const auth = { 
+        user, 
+        setUser,
+        login,
+        logout,
+        wrongUser,
+        role,
+        deleteArticle,
+        editArticle,
+        addFavorite 
+    }
     return (
         <UserContext.Provider value={auth} >
             {children}

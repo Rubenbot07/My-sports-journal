@@ -8,11 +8,12 @@ import { Author } from './pages/Author'
 import { Profile } from './pages/Profile'
 import { Layout } from './components/Layout'
 import { EditArticleForm } from './components/EditArticleForm'
-import { UserProvider, useAuth } from './context/UserContext'
+import { PrivateRoute } from './components/PrivateRoute'
+import { PublicRoute } from './components/PublicRoute'
+import { UserProvider } from './context/UserContext'
 import { MostPopular } from './pages/MostPopular'
 function App() {
   const AppRoutes = () => {
-    const auth = useAuth()
     return useRoutes([
       {
         path: '/',  
@@ -26,22 +27,26 @@ function App() {
         path: '/most-popular',  
         element: <MostPopular />
       },
-      ...(auth.user ? [
-        {
-          path: '/profile',  
-          element: <Profile />
-        },
-      ] : [
-        {
-          path: '/login',  
-          element: <Login />
-        },
-        {
-          path: '/signup',  
-          element: <SignUp />
-        }
-      ]),
-      
+      {
+        path: '/profile',
+        element : <PrivateRoute><Profile /></PrivateRoute>
+      },
+      {
+        path: '/login',  
+        element: <PublicRoute><Login /></PublicRoute>
+      },
+      {
+        path: '/articles/edit/:articleId',
+        element: (
+            <PrivateRoute roles={['admin', 'editor']}>
+                <EditArticleForm />
+            </PrivateRoute>
+        )
+    },
+      {
+        path: '/signup',  
+        element: <PublicRoute><SignUp /></PublicRoute>
+      },
       {
         path: '*',  
         element: <h1>404</h1>
@@ -62,13 +67,6 @@ function App() {
         path: '/authors/:authorId',  
         element: <Author />
       },
-      ...(auth.role === 'admin' || auth.role === 'editor' ? [
-        {
-          path: '/articles/edit/:articleId',  
-          element: <EditArticleForm />
-        },
-      ] : []
-      ),
       {
         path: '/articles/edit',
         element: <Home />

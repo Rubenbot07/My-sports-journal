@@ -16,6 +16,7 @@ export const Article = () => {
                     {currentArticle.author}
                 </Link>
             </h3>
+            <button onClick={() => auth.addFavorite(currentArticle.id)} className='bg-blue-500 text-white p-2 rounded-lg'>Add To Favorites</button>
 
             {
                 auth?.role === 'admin' && (
