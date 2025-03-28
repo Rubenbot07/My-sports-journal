@@ -6,13 +6,12 @@ export const PrivateRoute = ({ children, roles }) => {
     const auth = useAuth()
 
     if (!auth.user) {
-        console.log(location.pathname)
-        return <Navigate to='/login' state={{ from: location.pathname }} />
+        return <Navigate to='/login' state={{ from: location }} />
     }
 
-    if (roles && !roles.includes(auth.role)) {
-        return <Navigate to='/' />
-    }
+    // if (roles && !roles.includes(auth.role)) {
+    //     return <Navigate to='/' />
+    // }
 
     return children
 }

@@ -22,6 +22,9 @@ export const Nav = () => {
                         </li>
                     )
                 }
+                <li>
+                    <NavLink to="/favorites">Favorites</NavLink>
+                </li>
             </ul>
             <ul className="flex gap-4 p-4">
                 {

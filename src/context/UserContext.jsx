@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
         setUser(username)
         setRole(user.role)
         setWrongUser(false)
-        navigate(location.state?.from || '/')
+        navigate(location.state?.from ? location.state.from.pathname : '/')
     }
 
     const logout = () => {
@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
     }
     const addFavorite = (articleId) => {
         if(!user) {
-            navigate('/login', { state: { from: location.pathname } })
+            navigate('/login', { state: { from: location } })
             return
         }
         console.log('Add to favorites', articleId)
