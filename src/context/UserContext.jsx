@@ -6,8 +6,8 @@ import Articles from '../mock-data/sports-articles.json'
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState('Ruben')
-    const [role, setRole] = useState('admin')
+    const [user, setUser] = useState(null)
+    const [role, setRole] = useState(null)
     const [wrongUser, setWrongUser] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
