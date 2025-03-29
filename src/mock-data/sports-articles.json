@@ -4,104 +4,153 @@
       "title": "The Rise of Young Talent in Football",
       "author": "Maria González",
       "publishedDate": "2025-03-15",
-      "content": "Young football stars are taking the world by storm. Players under 21 are showcasing incredible skills in major leagues."
+      "content": "Young football stars are taking the world by storm. Players under 21 are showcasing incredible skills in major leagues.",
+      "comments": [
+        {
+          "userName": "JohnDoe",
+          "id": 1,
+          "content": "Great article! These young players are truly inspiring.",
+          "date": "2025-03-16"
+        }
+      ]
     },
     {
       "id": 2,
       "title": "Top 5 Moments in Basketball History",
       "author": "James Collins",
       "publishedDate": "2025-03-18",
-      "content": "From buzzer-beaters to historic comebacks, we look back at the top moments that defined basketball as we know it."
+      "content": "From buzzer-beaters to historic comebacks, we look back at the top moments that defined basketball as we know it.",
+      "comments": []
     },
     {
       "id": 3,
       "title": "Innovative Training Techniques in Tennis",
       "author": "Anika Sharma",
       "publishedDate": "2025-03-20",
-      "content": "Tennis players are exploring new training methods, including virtual reality and AI-driven performance analysis."
+      "content": "Tennis players are exploring new training methods, including virtual reality and AI-driven performance analysis.",
+      "comments": [
+        {
+          "userName": "TennisFan99",
+          "id": 2,
+          "content": "Interesting read! Technology is changing everything.",
+          "date": "2025-03-21"
+        }
+      ]
     },
     {
       "id": 4,
       "title": "The Science Behind Marathon Running",
       "author": "Carlos Mendoza",
       "publishedDate": "2025-03-22",
-      "content": "Marathon runners train for years to optimize endurance. Let's dive into the physiology and mental preparation required."
+      "content": "Marathon runners train for years to optimize endurance. Let's dive into the physiology and mental preparation required.",
+      "comments": []
     },
     {
       "id": 5,
       "title": "Esports: The Growing Phenomenon",
       "author": "Lila Nguyen",
       "publishedDate": "2025-03-25",
-      "content": "Esports has evolved into a global sensation, with millions of viewers tuning into events like Dota 2 and League of Legends championships."
+      "content": "Esports has evolved into a global sensation, with millions of viewers tuning into events like Dota 2 and League of Legends championships.",
+      "comments": [
+        {
+          "userName": "GamerGirl",
+          "id": 3,
+          "content": "Esports is the future! Great insights.",
+          "date": "2025-03-26"
+        },
+        {
+          "userName": "ProPlayer",
+          "id": 4,
+          "content": "I love how esports is getting the recognition it deserves.",
+          "date": "2025-03-27"
+        }
+      ]
     },
     {
       "id": 6,
       "title": "The Evolution of Cricket Strategies",
       "author": "Maria González",
       "publishedDate": "2025-03-26",
-      "content": "Cricket has seen a shift in strategies with the rise of T20 formats, emphasizing aggressive play and innovative tactics."
+      "content": "Cricket has seen a shift in strategies with the rise of T20 formats, emphasizing aggressive play and innovative tactics.",
+      "comments": []
     },
     {
       "id": 7,
       "title": "The Psychology of Winning in Sports",
       "author": "James Collins",
       "publishedDate": "2025-03-27",
-      "content": "Understanding the mental game is crucial for athletes. We explore how psychology impacts performance and success."
+      "content": "Understanding the mental game is crucial for athletes. We explore how psychology impacts performance and success.",
+      "comments": [
+        {
+          "userName": "SportsMind",
+          "id": 5,
+          "content": "This is so true. Mental strength is everything.",
+          "date": "2025-03-28"
+        }
+      ]
     },
     {
       "id": 8,
       "title": "The Impact of Technology on Sports",
       "author": "Anika Sharma",
       "publishedDate": "2025-03-28",
-      "content": "From VAR in football to Hawk-Eye in tennis, technology is revolutionizing how sports are played and officiated."
+      "content": "From VAR in football to Hawk-Eye in tennis, technology is revolutionizing how sports are played and officiated.",
+      "comments": []
     },
     {
       "id": 9,
       "title": "The Rise of Women's Sports",
       "author": "Lila Nguyen",
       "publishedDate": "2025-03-29",
-      "content": "Women's sports are gaining global recognition, with increased viewership and sponsorships driving growth."
+      "content": "Women's sports are gaining global recognition, with increased viewership and sponsorships driving growth.",
+      "comments": []
     },
     {
       "id": 10,
       "title": "The History of the Olympic Games",
       "author": "Carlos Mendoza",
       "publishedDate": "2025-03-30",
-      "content": "The Olympics have a rich history dating back to ancient Greece. We explore its evolution into the modern era."
+      "content": "The Olympics have a rich history dating back to ancient Greece. We explore its evolution into the modern era.",
+      "comments": []
     },
     {
       "id": 11,
       "title": "How Nutrition Shapes Athletic Performance",
       "author": "Maria González",
       "publishedDate": "2025-03-31",
-      "content": "Athletes are focusing on tailored nutrition plans to maximize performance and recovery."
+      "content": "Athletes are focusing on tailored nutrition plans to maximize performance and recovery.",
+      "comments": []
     },
     {
       "id": 12,
       "title": "The Role of Coaches in Modern Sports",
       "author": "James Collins",
       "publishedDate": "2025-04-01",
-      "content": "Coaches are more than strategists; they are mentors and motivators who shape the careers of athletes."
+      "content": "Coaches are more than strategists; they are mentors and motivators who shape the careers of athletes.",
+      "comments": []
     },
     {
       "id": 13,
       "title": "The Future of Extreme Sports",
       "author": "Anika Sharma",
       "publishedDate": "2025-04-02",
-      "content": "Extreme sports are pushing the boundaries of human capability, with new disciplines emerging every year."
+      "content": "Extreme sports are pushing the boundaries of human capability, with new disciplines emerging every year.",
+      "comments": []
     },
     {
       "id": 14,
       "title": "The Business of Sports Sponsorships",
       "author": "Carlos Mendoza",
       "publishedDate": "2025-04-03",
-      "content": "Sponsorships are a major revenue stream for sports organizations. We analyze the trends shaping this industry."
+      "content": "Sponsorships are a major revenue stream for sports organizations. We analyze the trends shaping this industry.",
+      "comments": []
     },
     {
       "id": 15,
       "title": "The Rise of Fantasy Sports Leagues",
       "author": "Lila Nguyen",
       "publishedDate": "2025-04-04",
-      "content": "Fantasy sports leagues are engaging millions of fans worldwide, creating a new way to experience sports."
+      "content": "Fantasy sports leagues are engaging millions of fans worldwide, creating a new way to experience sports.",
+      "comments": []
     }
   ]
