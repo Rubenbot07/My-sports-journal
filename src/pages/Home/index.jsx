@@ -1,11 +1,11 @@
 import { ArticleLink } from '../../components/ArticleLink';
-import Articles from '../../mock-data/sports-articles.json';
-
+import { useAuth } from '../../context/UserContext';
 export const Home = () => {
+    const { articles } = useAuth()
     return (
         <div>
             <h1>Home</h1>
-            {Articles.map((article) => (               
+            {articles.map((article) => (               
                 <ArticleLink key={article.id} article={article}></ArticleLink>
             ))}
         </div>

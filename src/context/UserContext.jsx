@@ -26,7 +26,6 @@ export const UserProvider = ({ children }) => {
         setUser(username)
         setRole(user.role)
         setWrongUser(false)
-        console.log(location.state)
         navigate(location.state?.from ? location.state.from.pathname : '/')
     }
 
@@ -53,7 +52,6 @@ export const UserProvider = ({ children }) => {
     const handleFavorites = (articleId) => {
         if(!user) {
             navigate('/login', { state: { from: location } })
-            console.log(location.state)
             return
         }
         if (favorites.some(favorite => favorite.id === articleId)) {
@@ -73,9 +71,8 @@ export const UserProvider = ({ children }) => {
             date: date
         }
         const articlesCopy = [...articles]
-        const updatedCurrentArticle = articles[articleIndex].comments.push(commentObject)
-        const updatedArticles = articlesCopy.splice(articleIndex, 1, { ...updatedCurrentArticle})
-        setArticles(updatedArticles)
+        articlesCopy[articleIndex].comments.push(commentObject)
+        setArticles(articlesCopy)
     }
     const deleteComment = (articleId, commentId) => {
         const articleIndex = articles.findIndex(article => article.id === articleId)
