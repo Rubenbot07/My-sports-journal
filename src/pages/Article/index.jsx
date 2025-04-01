@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../../context/UserContext';
+import { Comment } from '../../components/Comment';
 export const Article = () => {
     const auth = useAuth()
     const { articleId } = useParams();
@@ -9,7 +10,7 @@ export const Article = () => {
         e.preventDefault();
         const comment = e.target.comment.value;
         if (comment) {
-            auth.addComment(currentArticle.id, comment, auth.user.name, new Date().toLocaleDateString());
+            auth.addComment(currentArticle.id, comment, auth.user, new Date().toLocaleDateString());
             // auth.addComment(currentArticle.id, comment);
             e.target.comment.value = '';
         }
@@ -27,19 +28,8 @@ export const Article = () => {
             <div>
                 <h2 className='text-xl font-bold'>Comments</h2>
                 {currentArticle.comments?.map(comment => (
-                    <div key={comment.id} className='bg-gray-200 p-2 my-2 flex gap-2 flex-col justify-between'>
-                        <h4 className='font-bold'>{comment.userName}</h4>
-                        <p>{comment.content}</p>
-                        {
-                            auth?.role === 'admin' && (
-                                <button
-                                    onClick={() => auth.deleteComment(currentArticle.id, comment.id)}
-                                    className='bg-red-500 text-white p-1 rounded-lg w-40 mx-auto'
-                                >
-                                    Delete
-                                </button>
-                            )
-                        }
+                    <div key={comment.id} className='flex flex-col gap-2'>
+                        <Comment  comment={comment.content} commentId={comment.id} articleId={currentArticle.id} userName={comment.userName} />
                     </div>
                 ))}
                 {

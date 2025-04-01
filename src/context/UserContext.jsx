@@ -71,12 +71,19 @@ export const UserProvider = ({ children }) => {
             content: comment,
             date: date
         }
-        const updatedArticle = articles[articleIndex].comments.push(commentObject)
-        const updatedArticles = articles.splice(articleIndex, 1, { ...updatedArticle})
+        const articlesCopy = [...articles]
+        const updatedCurrentArticle = articles[articleIndex].comments.push(commentObject)
+        const updatedArticles = articlesCopy.splice(articleIndex, 1, { ...updatedCurrentArticle})
         setArticles(updatedArticles)
     }
     const deleteComment = (articleId, commentId) => {
-        console.log(articleId, commentId)
+        const articleIndex = articles.findIndex(article => article.id === articleId)
+        const commentIndex = articles[articleIndex].comments.findIndex(comment => comment.id === commentId)
+        const articlesCopy = [...articles]
+        const updatedCurrentArticle = articlesCopy[articleIndex].comments.splice(commentIndex, 1)
+        console.log(updatedCurrentArticle)
+        const updatedArticles = articlesCopy.splice(articleIndex, 1, { ...updatedCurrentArticle})
+        setArticles(updatedArticles)
     }
     const auth = { 
         user, 
