@@ -7,7 +7,7 @@
       "content": "Young football stars are taking the world by storm. Players under 21 are showcasing incredible skills in major leagues.",
       "comments": [
         {
-          "userName": "JohnDoe",
+          "userName": "Carlos Perez",
           "id": 1,
           "content": "Great article! These young players are truly inspiring.",
           "date": "2025-03-16"
@@ -30,7 +30,7 @@
       "content": "Tennis players are exploring new training methods, including virtual reality and AI-driven performance analysis.",
       "comments": [
         {
-          "userName": "TennisFan99",
+          "userName": "Emily Johnson",
           "id": 2,
           "content": "Interesting read! Technology is changing everything.",
           "date": "2025-03-21"
@@ -53,13 +53,13 @@
       "content": "Esports has evolved into a global sensation, with millions of viewers tuning into events like Dota 2 and League of Legends championships.",
       "comments": [
         {
-          "userName": "GamerGirl",
+          "userName": "Sara Lopez",
           "id": 3,
           "content": "Esports is the future! Great insights.",
           "date": "2025-03-26"
         },
         {
-          "userName": "ProPlayer",
+          "userName": "Carlos Perez",
           "id": 4,
           "content": "I love how esports is getting the recognition it deserves.",
           "date": "2025-03-27"
@@ -82,7 +82,7 @@
       "content": "Understanding the mental game is crucial for athletes. We explore how psychology impacts performance and success.",
       "comments": [
         {
-          "userName": "SportsMind",
+          "userName": "Sara Lopez",
           "id": 5,
           "content": "This is so true. Mental strength is everything.",
           "date": "2025-03-28"

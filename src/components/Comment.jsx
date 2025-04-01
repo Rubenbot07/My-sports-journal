@@ -1,9 +1,10 @@
-import { useAuth } from '../context/UserContext'
-export const Comment = ({ comment, userName, commentId, articleId }) => {
-    const auth = useAuth()
+import { Link } from 'react-router-dom'
+export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
     return (
         <article className="bg-gray-200 p-2 my-2 flex gap-2 flex-col justify-between">
-            <h4 className="font-bold">{userName}</h4>
+            <Link to={`/profile/${userName}`} className="font-bold">
+                <h4 className="font-bold">{userName}</h4>
+            </Link>
             <p>{comment}</p>
             {
                 (auth?.role === 'admin' || auth?.user === userName)

@@ -37,6 +37,10 @@ function App() {
         element : <PrivateRoute><Profile /></PrivateRoute>
       },
       {
+        path: '/profile/:userName',  
+        element: <Profile />
+      },
+      {
         path: '/login',  
         element: <PublicRoute><Login /></PublicRoute>
       },

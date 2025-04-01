@@ -29,7 +29,7 @@ export const Article = () => {
                 <h2 className='text-xl font-bold'>Comments</h2>
                 {currentArticle.comments?.map(comment => (
                     <div key={comment.id} className='flex flex-col gap-2'>
-                        <Comment  comment={comment.content} commentId={comment.id} articleId={currentArticle.id} userName={comment.userName} />
+                        <Comment auth={auth} comment={comment.content} commentId={comment.id} articleId={currentArticle.id} userName={comment.userName} />
                     </div>
                 ))}
                 {

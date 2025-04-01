@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
     const [role, setRole] = useState(null)
     const [wrongUser, setWrongUser] = useState(false)
     const [articles, setArticles] = useState(Articles)
+    const [users, setUsers] = useState(usersData)
     const [favorites, setFavorites] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
@@ -98,7 +99,9 @@ export const UserProvider = ({ children }) => {
         favorites,
         handleFavorites,
         addComment,
-        deleteComment
+        deleteComment,
+        users,
+        setUsers
     }
     return (
         <UserContext.Provider value={auth} >
