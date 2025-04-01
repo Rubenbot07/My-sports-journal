@@ -18,7 +18,7 @@ export const Nav = () => {
                 {
                     auth.user && (
                         <li>
-                            <NavLink to="/profile">Profile</NavLink>
+                            <NavLink to={`/profile/${auth.user}`}>Profile</NavLink>
                         </li>
                     )
                 }

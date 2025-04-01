@@ -5,7 +5,6 @@ export const Article = () => {
     const auth = useAuth()
     const { articleId } = useParams();
     const currentArticle = auth.articles[articleId - 1];
-    console.log(currentArticle.title);
     const handleComment = (e) => {
         e.preventDefault();
         const comment = e.target.comment.value;
