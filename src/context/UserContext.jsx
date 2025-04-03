@@ -38,16 +38,19 @@ export const UserProvider = ({ children }) => {
 
     const deleteArticle = (articleId) => {
         const articleIndex = articles.findIndex(article => article.id === articleId)
-        articles
-        .splice(articleIndex, 1)
+        const articlesCopy = [...articles]
+        articlesCopy.splice(articleIndex, 1)
+        console.log(articlesCopy)
+        setArticles(articlesCopy)
         navigate('/')
     }
 
     const editArticle = (articleId, title, author, publishedDate, content) => {
         const articleIdParsed = parseInt(articleId)
         const articleIndex = articles.findIndex(article =>  article.id === articleIdParsed)
-        const updatedArticle = articles.splice(articleIndex, 1, { id: articleIdParsed, title: title, author: author, publishedDate: publishedDate, content: content })
-        setArticles(updatedArticle)
+        const articlesCopy = [...articles]
+        articlesCopy.splice(articleIndex, 1, { id: articleIdParsed, title: title, author: author, publishedDate: publishedDate, content: content })
+        setArticles(articlesCopy)
         navigate(`/articles/${articleId}`)
     }
     const handleFavorites = (articleId) => {
@@ -80,7 +83,6 @@ export const UserProvider = ({ children }) => {
         const commentIndex = articles[articleIndex].comments.findIndex(comment => comment.id === commentId)
         const articlesCopy = [...articles]
         articlesCopy[articleIndex].comments.splice(commentIndex, 1)
-        console.log(articlesCopy)
         setArticles(articlesCopy)
     }
 

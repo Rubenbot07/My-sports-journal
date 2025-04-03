@@ -3,7 +3,6 @@ import { Home } from './pages/Home'
 import { Article } from './pages/Article'
 import { Login } from './pages/LogIn'
 import { About } from './pages/About'
-import { SignUp } from './pages/SignUp'
 import { Author } from './pages/Author'
 import { Profile } from './pages/Profile'
 import { Favorites } from './pages/Favorites'
@@ -52,10 +51,6 @@ function App() {
             </PrivateRoute>
         )
     },
-      {
-        path: '/signup',  
-        element: <PublicRoute><SignUp /></PublicRoute>
-      },
       {
         path: '*',  
         element: <h1>404</h1>

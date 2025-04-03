@@ -42,8 +42,8 @@ export const Nav = () => {
                             <li>
                                 <NavLink to="/login">Login</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/signup">Sign Up</NavLink>
+                            <li className="bg-red-500 p-1 text-white rounded-sm">
+                                Subscribe
                             </li>
                         </>
                     )

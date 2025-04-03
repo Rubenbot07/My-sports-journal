@@ -12,7 +12,8 @@
           "content": "Great article! These young players are truly inspiring.",
           "date": "2025-03-16"
         }
-      ]
+      ],
+      "category": "Football"
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "author": "James Collins",
       "publishedDate": "2025-03-18",
       "content": "From buzzer-beaters to historic comebacks, we look back at the top moments that defined basketball as we know it.",
-      "comments": []
+      "comments": [],
+      "category": "Basketball"
     },
     {
       "id": 3,
@@ -35,7 +37,8 @@
           "content": "Interesting read! Technology is changing everything.",
           "date": "2025-03-21"
         }
-      ]
+      ],
+      "category": "Tennis"
     },
     {
       "id": 4,
@@ -43,7 +46,8 @@
       "author": "Carlos Mendoza",
       "publishedDate": "2025-03-22",
       "content": "Marathon runners train for years to optimize endurance. Let's dive into the physiology and mental preparation required.",
-      "comments": []
+      "comments": [],
+      "category": "Running"
     },
     {
       "id": 5,
@@ -64,7 +68,8 @@
           "content": "I love how esports is getting the recognition it deserves.",
           "date": "2025-03-27"
         }
-      ]
+      ],
+      "category": "Esports"
     },
     {
       "id": 6,
@@ -72,7 +77,8 @@
       "author": "Maria González",
       "publishedDate": "2025-03-26",
       "content": "Cricket has seen a shift in strategies with the rise of T20 formats, emphasizing aggressive play and innovative tactics.",
-      "comments": []
+      "comments": [],
+      "category": "Cricket"
     },
     {
       "id": 7,
@@ -87,7 +93,8 @@
           "content": "This is so true. Mental strength is everything.",
           "date": "2025-03-28"
         }
-      ]
+      ],
+      "category": "Sports Psychology"
     },
     {
       "id": 8,
@@ -95,7 +102,8 @@
       "author": "Anika Sharma",
       "publishedDate": "2025-03-28",
       "content": "From VAR in football to Hawk-Eye in tennis, technology is revolutionizing how sports are played and officiated.",
-      "comments": []
+      "comments": [],
+      "category": "Technology"
     },
     {
       "id": 9,
@@ -103,7 +111,8 @@
       "author": "Lila Nguyen",
       "publishedDate": "2025-03-29",
       "content": "Women's sports are gaining global recognition, with increased viewership and sponsorships driving growth.",
-      "comments": []
+      "comments": [],
+      "category": "Women's Sports"
     },
     {
       "id": 10,
@@ -111,7 +120,8 @@
       "author": "Carlos Mendoza",
       "publishedDate": "2025-03-30",
       "content": "The Olympics have a rich history dating back to ancient Greece. We explore its evolution into the modern era.",
-      "comments": []
+      "comments": [],
+      "category": "Olympics"
     },
     {
       "id": 11,
@@ -119,7 +129,8 @@
       "author": "Maria González",
       "publishedDate": "2025-03-31",
       "content": "Athletes are focusing on tailored nutrition plans to maximize performance and recovery.",
-      "comments": []
+      "comments": [],
+      "category": "Nutrition"
     },
     {
       "id": 12,
@@ -127,7 +138,8 @@
       "author": "James Collins",
       "publishedDate": "2025-04-01",
       "content": "Coaches are more than strategists; they are mentors and motivators who shape the careers of athletes.",
-      "comments": []
+      "comments": [],
+      "category": "Coaching"
     },
     {
       "id": 13,
@@ -135,7 +147,8 @@
       "author": "Anika Sharma",
       "publishedDate": "2025-04-02",
       "content": "Extreme sports are pushing the boundaries of human capability, with new disciplines emerging every year.",
-      "comments": []
+      "comments": [],
+      "category": "Extreme Sports"
     },
     {
       "id": 14,
@@ -143,7 +156,8 @@
       "author": "Carlos Mendoza",
       "publishedDate": "2025-04-03",
       "content": "Sponsorships are a major revenue stream for sports organizations. We analyze the trends shaping this industry.",
-      "comments": []
+      "comments": [],
+      "category": "Business"
     },
     {
       "id": 15,
@@ -151,6 +165,7 @@
       "author": "Lila Nguyen",
       "publishedDate": "2025-04-04",
       "content": "Fantasy sports leagues are engaging millions of fans worldwide, creating a new way to experience sports.",
-      "comments": []
+      "comments": [],
+      "category": "Fantasy Sports"
     }
   ]
