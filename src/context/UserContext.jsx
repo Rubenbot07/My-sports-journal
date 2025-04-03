@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
     const [articles, setArticles] = useState(Articles)
     const [users, setUsers] = useState(usersData)
     const [favorites, setFavorites] = useState([])
+    const [isEditComment, setIsEditComment] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
     const login = ({ username, userPassword }) => {
@@ -78,13 +79,22 @@ export const UserProvider = ({ children }) => {
         const articleIndex = articles.findIndex(article => article.id === articleId)
         const commentIndex = articles[articleIndex].comments.findIndex(comment => comment.id === commentId)
         const articlesCopy = [...articles]
-        const updatedCurrentArticle = articlesCopy[articleIndex].comments.splice(commentIndex, 1)
-        console.log(updatedCurrentArticle)
-        const updatedArticles = articlesCopy.splice(articleIndex, 1, { ...updatedCurrentArticle})
-        setArticles(updatedArticles)
+        articlesCopy[articleIndex].comments.splice(commentIndex, 1)
+        console.log(articlesCopy)
+        setArticles(articlesCopy)
     }
-    const auth = { 
-        user, 
+
+    const updateComment = (articleId, commentId, comment) => {
+        setIsEditComment(!isEditComment)
+        const articleIndex = articles.findIndex(article => article.id === articleId)
+        const commentIndex = articles[articleIndex].comments.findIndex(comment => comment.id === commentId)
+        const articlesCopy = [...articles]
+        articlesCopy[articleIndex].comments[commentIndex].content = comment
+        setArticles(articlesCopy)
+    }
+
+    const auth = {
+        user,
         setUser,
         login,
         logout,
@@ -98,7 +108,10 @@ export const UserProvider = ({ children }) => {
         addComment,
         deleteComment,
         users,
-        setUsers
+        setUsers,
+        isEditComment,
+        setIsEditComment,
+        updateComment
     }
     return (
         <UserContext.Provider value={auth} >
