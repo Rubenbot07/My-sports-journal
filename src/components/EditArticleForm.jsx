@@ -10,14 +10,15 @@ export const EditArticleForm = () => {
     const [content, setContent] = useState(currentArticle.content)
     const [author, setAuthor] = useState(currentArticle.author)
     const [date, setDate] = useState(currentArticle.publishedDate)
-
+    const [category, setCategory] = useState(currentArticle.category)
+    console.log(category)
     return (
         <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
             <h1 className='text-2xl font-bold bg-blue-500'>Edit Article</h1>
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
-                    auth.editArticle(articleId, title, author, date, content)
+                    auth.editArticle(articleId, title, author, date, content, category)
                 }} 
                 className="flex flex-col gap-4 w-4/6 min-w-72 mx-auto p-4 "
             >
@@ -53,6 +54,19 @@ export const EditArticleForm = () => {
                     className="border border-blue-500 p-2 text-center bg-white" 
                     onChange={(e) => setDate(e.target.value)}
                 />
+                <select
+                    className="border border-blue-500 p-2 text-center bg-white"  
+                    name="category"
+                    id="category"
+                    onChange={(e) => e.target.value && setCategory(e.target.value)}
+                >
+                    <option value="">Select Category</option>
+                    <option value="Football">Football</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Esports">Esports</option>
+                </select>
                 <button 
                     className="bg-blue-500 text-white p-2 rounded-lg"
                     type="submit"

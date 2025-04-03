@@ -16,6 +16,9 @@ export const Article = () => {
     }
     return (
         <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
+            <h3 className='bg-gray-300 p-2 w-fit rounded-sm border-l-4 border-l-blue-500 cursor-pointer'>
+                <Link>{currentArticle.category} / {currentArticle.publishedDate}</Link>
+            </h3>
             <h1 className='text-2xl font-bold bg-blue-500'>{currentArticle.title}</h1>
             <p className='bg-gray-300 p-4 text-lg'>{currentArticle.content}</p>
             

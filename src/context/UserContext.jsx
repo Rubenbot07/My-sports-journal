@@ -45,11 +45,11 @@ export const UserProvider = ({ children }) => {
         navigate('/')
     }
 
-    const editArticle = (articleId, title, author, publishedDate, content) => {
+    const editArticle = (articleId, title, author, publishedDate, content, category) => {
         const articleIdParsed = parseInt(articleId)
         const articleIndex = articles.findIndex(article =>  article.id === articleIdParsed)
         const articlesCopy = [...articles]
-        articlesCopy.splice(articleIndex, 1, { id: articleIdParsed, title: title, author: author, publishedDate: publishedDate, content: content })
+        articlesCopy.splice(articleIndex, 1, { id: articleIdParsed, title: title, author: author, publishedDate: publishedDate, content: content, category: category })
         setArticles(articlesCopy)
         navigate(`/articles/${articleId}`)
     }
@@ -94,7 +94,6 @@ export const UserProvider = ({ children }) => {
         articlesCopy[articleIndex].comments[commentIndex].content = comment
         setArticles(articlesCopy)
     }
-
     const auth = {
         user,
         setUser,
