@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useAuth } from '../../context/UserContext';
 import { Comment } from '../../components/Comment';
 export const Article = () => {
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
     const auth = useAuth()
     const { articleId } = useParams();
     const currentArticle = auth.articles[articleId - 1];
@@ -13,12 +15,23 @@ export const Article = () => {
             e.target.comment.value = '';
         }
     }
+    const handleImageLoad = () => {
+        setIsImageLoaded(true);
+    };
     return (
         <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
             <h3 className='bg-gray-300 p-2 w-fit rounded-sm border-l-4 border-l-blue-500 cursor-pointer'>
                 <Link to={`/category/${currentArticle.category}`} >{currentArticle.category} / {currentArticle.publishedDate}</Link>
             </h3>
             <h1 className='text-2xl font-bold bg-blue-500'>{currentArticle.title}</h1>
+            <div className={`flex justify-center items-center bg-gray-300 ${isImageLoaded ? 'h-auto' : 'h-[200px] md:h-[500px]'} transition-all duration-500`}>
+                <img 
+                    src={currentArticle.image}
+                    alt={currentArticle.title}
+                    onLoad={handleImageLoad}
+                    className={`w-auto min-w-[300px] h-auto max-h-[500px] ${isImageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+                />
+            </div>
             <p className='bg-gray-300 p-4 text-lg'>{currentArticle.content}</p>
             
             <h3 className='font-bold underline'>
