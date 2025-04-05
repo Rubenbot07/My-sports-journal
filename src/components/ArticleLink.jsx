@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom'
-export const ArticleLink = ({ article }) => {
+export const ArticleLink = ({ article, isThird }) => {
     return (
-        <article className="border border-gray-300 p-4 mb-4 w-5/6 mx-auto">
+        <article className={`relative border border-gray-300 w-full flex flex-col bg-gray-100 rounded-lg shadow-md  text-start ${isThird ? 'pb-0 lg:row-span-2 lg:col-span-2 row-start-1 lg:col-start-2 lg:row-start-1 2sm:col-span-2' : 'pb-4'}`}>
             <Link to={`/articles/${article.id}`}>
-                <h2 className='font-bold bg-blue-500'>{article.title}</h2>
-                <p>
-                    {article.author}
-                </p>
-                <p>{article.publishedDate}</p>
+                <div className={`overflow-hidden rounded-t-lg h-[200px] relative ${isThird ? 'lg:h-[300px]' : ''} transition-all duration-500`}>
+                    <img className='w-full h-full object-top object-cover'  src={article.image} alt={article.title} />
+                    <div className='absolute border-l-6 border-l-red-500  bg-white top-1 right-1 px-1 rounded-md text-center text-md text-black font-bold'>{article.category}</div>
+                </div>
+                <h2 className='font-bold p-2 text-xl'>{article.title}</h2>
+                {
+                    isThird && (
+                        <>              
+                            <div className='hidden lg:flex lg:flex-col gap-8 p-3'>
+                                <p className='text-black'>{article.content.slice(0, 400)}...</p>
+                            </div>
+                            <i className='sm:absolute flex bottom-0 right-0 text-2xl md:w-2/4 text-center bg-red-500 text-white p-2 font-bold rounded-bl-lg sm:rounded-tl-lg sm:rounded-bl-none rounded-br-lg'>Most Read</i>
+                        </>
+                    )
+                }
             </Link>
         </article>
     )

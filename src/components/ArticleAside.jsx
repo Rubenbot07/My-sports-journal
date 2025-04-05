@@ -4,7 +4,7 @@ export const ArticleAside = ({ articles }) => {
                         <aside className='h-full w-full bg-gray-100 p-4 rounded-lg shadow-md flex flex-col gap-4'>
                             <h2 className='text-center text-xl md:text-2xl font-bold'>Latest Articles</h2>
                             <p className='text-center text-gray-500'>Check out our latest articles on various topics!</p>
-                            <div className='flex lg:gap-4 lg:flex-nowrap gap-2 justify-center lg:flex-col flex-wrap'>
+                            <div className='flex lg:gap-4 gap-2 justify-center lg:flex-col md:flex-row md:flex-wrap flex-col'>
                                 {articles.slice(0, 5).map((article) => (
                                     <Link to={`/articles/${article.id}`} key={article.id}>
                                         <div 
