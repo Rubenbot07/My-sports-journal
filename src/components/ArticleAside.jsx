@@ -8,7 +8,7 @@ export const ArticleAside = ({ articles }) => {
                                 {articles.slice(0, 5).map((article) => (
                                     <Link to={`/articles/${article.id}`} key={article.id}>
                                         <div 
-                                            className=' bg-white border-1 border-l-8 border-l-red-500 border-gray-300 rounded-lg p-2 lg:p-4 hover:bg-gray-100 transition duration-300 cursor-pointer shadow-md'
+                                            className=' bg-white border-1 border-l-8 border-l-primary border-gray-300 rounded-lg p-2 lg:p-4 hover:bg-gray-100 transition duration-300 cursor-pointer shadow-md'
                                         >
                                             <h3 className='text-md md:text-lg font-bold'>{article.title}</h3>
                                         </div>

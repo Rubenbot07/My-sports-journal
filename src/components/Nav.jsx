@@ -31,7 +31,7 @@ export const Nav = () => {
 
     return (
         <nav className=" flex flex-col justify-between">
-            <ul className="flex justify-between gap-4 p-2 items-center bg-red-500 text-white">
+            <ul className="flex justify-between gap-4 p-2 items-center bg-primary text-white">
                 <li className="flex items-center">
                     <button
                             className="flex flex-col justify-between w-6 h-6 md:hidden focus:outline-none"
