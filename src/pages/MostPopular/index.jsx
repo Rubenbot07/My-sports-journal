@@ -1,19 +1,18 @@
 import { Link } from 'react-router-dom';
-import { ArticleLink } from '../../components/ArticleLink';
 import Articles from '../../mock-data/sports-articles.json';
 export const MostPopular = () => {
     const mostPopularArticles = [...Articles.slice(0, 6 )];
     return (
-        <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 w-full max-w-[1500px] mx-auto'>
-            <h1 className='font-bold  text-4xl text-red-500 lg:col-span-2 p-4'>Most Popular</h1>
+        <section className='grid grid-cols-1 2sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 p-4 w-full max-w-[1500px] mx-auto'>
+            <h1 className='font-bold  text-4xl text-red-500 col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 p-4'>Most Popular</h1>
             {
                 mostPopularArticles.map((article) => (
                     <Link to={`/articles/${article.id}`} key={article.id}>
                         <article className='relative flex flex-col md:flex-row max-w-[500px] md:max-w-none mx-auto gap-4 bg-gray-200 p-4 rounded-lg shadow-md'>
-                            <div className='w-full md:w-2/4 md:min-w-70 rounded-2xl overflow-hidden md:h-[200px]'>
+                            <div className='w-full md:w-2/4 md:min-w-70 rounded-2xl overflow-hidden h-[200px]'>
                                 <img className='w-full h-full object-cover' src={article.image} alt={article.title} />
                             </div>
-                            <div className='flex flex-col w-2/4 text-start gap-3 pt-4'>
+                            <div className='flex flex-col md:w-2/4 text-start gap-3 pt-4'>
                                 <h2 className='text-md'>{article.publishedDate}</h2>
                                 <h3 className='font-bold text-lg'>{article.title}</h3>
                                 <p className='hidden md:block'>{article.content.split(' ').slice(0, 20).join(' ')}...</p>
