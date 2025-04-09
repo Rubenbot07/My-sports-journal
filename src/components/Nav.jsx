@@ -114,7 +114,7 @@ export const Nav = () => {
                             <ChevronSVG />
                         </span>
                     </button>
-                        <ul className={`${isCategoriesOpen ? 'flex' : 'hidden' } flex-col  gap-4 md:absolute p-2 md:flex-row md:bg-gray-300 md:top-10 md:shadow-md md:rounded-b-md md:gap-8`}>
+                        <ul className={`${isCategoriesOpen ? 'flex' : 'hidden' } flex-col  gap-4 md:absolute p-2 md:flex-row md:bg-gray-10000 md:top-10 md:shadow-md md:rounded-b-md md:gap-8`}>
                             <li className="border-b-1 border-gray-800 md:border-none">
                                 <NavLink to="/category/soccer">Soccer</NavLink>
                             </li>
