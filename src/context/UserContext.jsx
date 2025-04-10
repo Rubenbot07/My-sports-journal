@@ -21,6 +21,7 @@ export const UserProvider = ({ children }) => {
 
         if (!user || !userDataPassword) {
             setWrongUser(true)
+            console.log('Wrong username or password')
             return
         }
 

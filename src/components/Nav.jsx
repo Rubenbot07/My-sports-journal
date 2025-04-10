@@ -79,7 +79,7 @@ export const Nav = () => {
                                         <LogInSVG />
                                     </NavLink>
                                 </li>
-                                <li className="bg-white p-1 text-red-500 rounded-sm hover:bg-red-500 hover:text-white">
+                                <li className="bg-white p-1 cursor-pointer text-primary rounded-sm hover:bg-primary hover:text-white">
                                     Subscribe
                                 </li>
                             </ul>
@@ -88,24 +88,24 @@ export const Nav = () => {
                 </li> 
             </ul>
             <ul className={`z-50 gap-8 p-4 w-1/2 rounded-br-2xl absolute top-14 ${isMenuOpen ? 'flex transition-transform duration-300 ease-in translate-x-0' : 'flex transition-transform -translate-x-full duration-300 ease-in'} md:relative md:top-0 md:flex flex-col md:translate-x-0 md:flex-row md:items-center bg-white shadow-md font-semibold md:gap-4 md:w-full md:rounded-b-none`}>
-                <li className="hover:text-red-500">
-                    <NavLink to="/" className={({ isActive }) => isActive ? 'border-b-2 border-red-500' : ''}>Home</NavLink>
+                <li className="hover:text-primary">
+                    <NavLink to="/" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Home</NavLink>
                 </li>
-                <li className="hover:text-red-500">
-                    <NavLink to="/about" className={({ isActive }) => isActive ? 'border-b-2 border-red-500' : ''}>About</NavLink>
+                <li className="hover:text-primary">
+                    <NavLink to="/about" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>About</NavLink>
                 </li>
-                <li className="hover:text-red-500">
-                    <NavLink to="/most-popular" className={({ isActive }) => isActive ? 'border-b-2 border-red-500' : ''}>Most Popular</NavLink>
+                <li className="hover:text-primary">
+                    <NavLink to="/most-popular" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Most Popular</NavLink>
                 </li>
                 {
                     auth.user && (
-                        <li className="hover:text-red-500">
-                            <NavLink to={`/profile/${auth.user}`} className={({ isActive }) => isActive ? 'border-b-2 border-red-500' : ''}>Profile</NavLink>
+                        <li className="hover:text-primary">
+                            <NavLink to={`/profile/${auth.user}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
                         </li>
                     )
                 }
-                <li className="hover:text-red-500">
-                    <NavLink to="/favorites" className={({ isActive }) => isActive ? 'border-b-2 border-red-500' : ''}>Favorites</NavLink>
+                <li className="hover:text-primary">
+                    <NavLink to="/favorites" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Favorites</NavLink>
                 </li>
                 <li ref={categoriesRef} className="relative">
                     <button className="flex items-center cursor-pointer" onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}>
@@ -114,7 +114,7 @@ export const Nav = () => {
                             <ChevronSVG />
                         </span>
                     </button>
-                        <ul className={`${isCategoriesOpen ? 'flex' : 'hidden' } flex-col  gap-4 md:absolute p-2 md:flex-row md:bg-gray-10000 md:top-10 md:shadow-md md:rounded-b-md md:gap-8`}>
+                        <ul className={`${isCategoriesOpen ? 'flex' : 'hidden' } flex-col  gap-4 md:absolute p-2 md:flex-row md:bg-gray-10000 md:top-10 md:shadow-md md:rounded-b-md md:gap-8 bg-white`}>
                             <li className="border-b-1 border-gray-800 md:border-none">
                                 <NavLink to="/category/soccer">Soccer</NavLink>
                             </li>
