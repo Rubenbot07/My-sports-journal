@@ -4,7 +4,7 @@ import { ArticleAside } from '../../components/ArticleAside';
 import { Link } from 'react-router-dom';
 export const Home = () => {
     const { articles } = useAuth()
-    const topTwelveArticles = articles.slice(0, 11)
+    const topTwelveArticles = articles?.slice(0, 11)
     return (
         <div className='flex flex-col gap-10 w-full '>
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>

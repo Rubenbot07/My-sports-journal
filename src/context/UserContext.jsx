@@ -43,6 +43,8 @@ export const UserProvider = ({ children }) => {
         articlesCopy.splice(articleIndex, 1)
         console.log(articlesCopy)
         setArticles(articlesCopy)
+        const updatedFavorites = favorites.filter(favorite => favorite.id !== articleId)
+        setFavorites(updatedFavorites)
         navigate('/')
     }
 
