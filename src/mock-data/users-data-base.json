@@ -1,65 +1,72 @@
 [
-    {
-      "id": 1,
-      "name": "Sofia Ramirez",
-      "email": "sofia.ramirez@example.com",
-      "role": "admin",
-      "createdAt": "2025-01-10",
-      "status": "active",
-      "password": "admin123"
-    },
-    {
-      "id": 2,
-      "name": "David Gonzalez",
-      "email": "david.gonzalez@example.com",
-      "role": "editor",
-      "createdAt": "2025-02-05",
-      "status": "active",
-      "password": "editme"
-    },
-    {
-      "id": 3,
-      "name": "Laura Martinez",
-      "email": "laura.martinez@example.com",
-      "role": "editor",
-      "createdAt": "2025-03-01",
-      "status": "active",
-      "password": "editor22"
-    },
-    {
-      "id": 4,
-      "name": "Carlos Perez",
-      "email": "carlos.perez@example.com",
-      "role": "reader",
-      "createdAt": "2025-03-15",
-      "status": "active",
-      "password": "reader01"
-    },
-    {
-      "id": 5,
-      "name": "Emily Johnson",
-      "email": "emily.johnson@example.com",
-      "role": "reader",
-      "createdAt": "2025-03-20",
-      "status": "inactive",
-      "password": "mypassword"
-    },
-    {
-      "id": 6,
-      "name": "Michael Chen",
-      "email": "michael.chen@example.com",
-      "role": "admin",
-      "createdAt": "2025-03-25",
-      "status": "active",
-      "password": "admin42"
-    },
-    {
-      "id": 7,
-      "name": "Sara Lopez",
-      "email": "sara.lopez@example.com",
-      "role": "reader",
-      "createdAt": "2025-04-01",
-      "status": "active",
-      "password": "sara123"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Sofia Ramirez",
+    "email": "sofia.ramirez@example.com",
+    "role": "admin",
+    "createdAt": "2025-01-10",
+    "status": "active",
+    "password": "admin123",
+    "photo": "https://images.stockcake.com/public/4/f/0/4f034565-d3e8-4360-9f93-f46c7aab9383_medium/smiling-female-professional-stockcake.jpg"
+  },
+  {
+    "id": 2,
+    "name": "David Gonzalez",
+    "email": "david.gonzalez@example.com",
+    "role": "editor",
+    "createdAt": "2025-02-05",
+    "status": "active",
+    "password": "editme",
+    "photo": "https://images.stockcake.com/public/3/0/c/30c39765-62a8-411e-aa91-63c86a76e4de_medium/happy-tech-user-stockcake.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Laura Martinez",
+    "email": "laura.martinez@example.com",
+    "role": "editor",
+    "createdAt": "2025-03-01",
+    "status": "active",
+    "password": "editor22",
+    "photo": "https://images.stockcake.com/public/4/f/0/4f034565-d3e8-4360-9f93-f46c7aab9383_medium/smiling-female-professional-stockcake.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Carlos Perez",
+    "email": "carlos.perez@example.com",
+    "role": "reader",
+    "createdAt": "2025-03-15",
+    "status": "active",
+    "password": "reader01",
+    "photo": "https://images.stockcake.com/public/3/0/c/30c39765-62a8-411e-aa91-63c86a76e4de_medium/happy-tech-user-stockcake.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Emily Johnson",
+    "email": "emily.johnson@example.com",
+    "role": "reader",
+    "createdAt": "2025-03-20",
+    "status": "inactive",
+    "password": "mypassword",
+    "photo": "https://images.stockcake.com/public/4/f/0/4f034565-d3e8-4360-9f93-f46c7aab9383_medium/smiling-female-professional-stockcake.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Michael Chen",
+    "email": "michael.chen@example.com",
+    "role": "admin",
+    "createdAt": "2025-03-25",
+    "status": "active",
+    "password": "admin42",
+    "photo": "https://images.stockcake.com/public/3/0/c/30c39765-62a8-411e-aa91-63c86a76e4de_medium/happy-tech-user-stockcake.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Sara Lopez",
+    "email": "sara.lopez@example.com",
+    "role": "reader",
+    "createdAt": "2025-04-01",
+    "status": "active",
+    "password": "sara123",
+    "photo": "https://images.stockcake.com/public/4/f/0/4f034565-d3e8-4360-9f93-f46c7aab9383_medium/smiling-female-professional-stockcake.jpg"
+  }
+]

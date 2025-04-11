@@ -16,7 +16,7 @@ export const Home = () => {
                             </div>
                         </Link>
                     </picture>
-                <ArticleAside articles={articles}/>
+                <ArticleAside articles={articles} title='Most Read' paragraph='Check out the most read articles' quantity={5}/>
             </section>
             <section className='grid xs:grid-cols-1 2sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full  min-[300px] lg:max-w-[1500px] mx-auto'>
                 {topTwelveArticles.map((article, index) => (               

@@ -9,7 +9,7 @@ export const ArticlesGalleryLayout = ({ title, articles}) => {
             </h1>
             {
                 articles.map((article) => (
-                    <ArticleOfCategories  key={article.id} article={article}/>
+                    <ArticleOfCategories  key={article.id} article={article} isSingle={isSingleArticle}/>
                 ))
             }
 
