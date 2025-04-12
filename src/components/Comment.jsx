@@ -17,7 +17,11 @@ export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
 
     return (
         <article className=" relative bg-white text-start py-5 px-2 flex gap-2 flex-col justify-between">
-            <button className='absolute bottom-3/6 right-3 text-3xl cursor-pointer h-full text-primary z-50' onClick={handleOptions}>...</button>
+            {
+                (auth?.user === userName || auth?.role === 'admin') &&  (
+                    <button className='absolute bottom-3/6 right-3 text-4xl cursor-pointer h-full text-primary z-50' onClick={handleOptions}>...</button>
+                )
+            }
             {
                 (!auth?.isEditComment || auth?.user !== userName) &&  (
                     <div className="flex flex-col gap-2 relative">

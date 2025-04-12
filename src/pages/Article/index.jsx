@@ -89,12 +89,12 @@ export const Article = () => {
                         )
                     }
                 </div>
-                <div className='flex p-4 gap-4 w-full col-span-3'>
+                <div className='flex p-4 gap-4 w-full col-span-3 flex-col lg:flex-row items-center'>
                     {
                         auth.favorites.some(favorite => favorite.id === currentArticle?.id) ? (
-                            <button onClick={() => auth.handleFavorites(currentArticle?.id)} className='bg-primary text-white p-2 rounded-lg min-w-32' >Remove From Favorites</button>
+                            <button onClick={() => auth.handleFavorites(currentArticle?.id)} className='bg-primary text-white p-2 rounded-lg min-w-32 max-w-56' >Remove From Favorites</button>
                         )  : (
-                            <button onClick={() => auth.handleFavorites(currentArticle?.id)} className='bg-primary text-white p-2 rounded-lg min-w-32'>Add To Favorites</button>
+                            <button onClick={() => auth.handleFavorites(currentArticle?.id)} className='bg-primary text-white p-2 rounded-lg min-w-32 max-w-56'>Add To Favorites</button>
                         )
                     }
                     {
@@ -102,11 +102,11 @@ export const Article = () => {
                             <>
                                 <button
                                     onClick={() => auth.deleteArticle(currentArticle?.id)}
-                                    className='bg-primary text-white p-2 rounded-lg min-w-32'
+                                    className='bg-primary text-white p-2 rounded-lg min-w-32 max-w-56'
                                 >
                                     Delete
                                 </button>
-                                <button className='bg-primary text-white p-2 rounded-lg min-w-32'>
+                                <button className='bg-primary text-white p-2 rounded-lg min-w-32 max-w-56'>
                                     <Link to={`/articles/edit/${currentArticle?.id}`}>
                                         Edit
                                     </Link>
