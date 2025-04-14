@@ -10,8 +10,8 @@ export const Home = () => {
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
                     <picture className='col-span-3 overflow-hidden relative rounded-xl'>
                         <Link to={`/articles/${articles[5]?.id}`}>
-                            <img src={articles[5]?.image} alt={articles[5]?.title} className='w-full h-full md:object-cover object-fill' />
-                            <div className='absolute bottom-0 left-0 p-2 text-center text-lg md:text-3xl md:p-4 text-white font-bold'>
+                            <img src={articles[5]?.image} alt={articles[5]?.title} className='w-full h-full md:object-cover hover:scale-105 transition-all duration-500 ' />
+                            <div className='absolute bg-blue-800/60 bottom-0 left-0 p-2 text-center text-lg md:text-3xl md:p-4 text-white font-bold w-full'>
                                 <h2 className=''>{articles[5]?.title}</h2>
                             </div>
                         </Link>

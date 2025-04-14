@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 export const ArticleOfCategories = ({ article, isSingle }) => {
     return (
         <Link to={`/articles/${article.id}`} >
-            <article className='relative flex flex-col md:flex-row max-w-[500px] md:max-w-none mx-auto gap-4 bg-gray-200 p-4 rounded-lg shadow-md'>
+            <article className='relative flex flex-col md:flex-row max-w-[500px] md:max-w-none mx-auto gap-4 bg-gray-200 p-4 rounded-lg shadow-md hover:bg-gray-300'>
                 <div className={`w-full md:w-2/4 md:min-w-70 rounded-2xl overflow-hidden h-[200px] ${isSingle ? 'lg:h-[300px]' : ''}`}>
-                    <img className='w-full h-full object-top object-cover' src={article.image} alt={article.title} />
+                    <img className='w-full h-full object-top object-cover hover:scale-105 transition-all duration-500 ' src={article.image} alt={article.title} />
                 </div>
                 <div className='flex flex-col md:w-2/4 text-start gap-2 pt-4 overflow-hidden'>
                     <h2 className='text-md'>{article.publishedDate}</h2>

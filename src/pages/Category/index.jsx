@@ -13,9 +13,9 @@ export const Category = () => {
                 {categoryTitle}
             </h1>
             <Link to={`/articles/${categoryArticles[0]?.id}`} className="col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2">
-                <article className="flex flex-col md:flex-row  bg-gray-300 p-4 rounded-lg shadow-md text-start gap-4">
+                <article className="flex flex-col md:flex-row  bg-gray-200 p-4 rounded-lg shadow-md text-start gap-4 hover:bg-gray-300">
                     <picture className="rounded-lg overflow-hidden md:w-2/3 lg:w-1/2 max-h-96">
-                        <img className="w-full h-full object-cover object-top" src={categoryArticles[0]?.image} alt={categoryArticles[0]?.title} />
+                        <img className="w-full h-full object-cover object-top hover:scale-105 transition-all duration-500 " src={categoryArticles[0]?.image} alt={categoryArticles[0]?.title} />
                     </picture>
                     <div className="flex flex-col gap-2 lg:gap-4 p-2 md:w-1/3 lg:w-1/2 overflow-hidden">
                         <h2 className='text-md'>{categoryArticles[0]?.publishedDate}</h2>
