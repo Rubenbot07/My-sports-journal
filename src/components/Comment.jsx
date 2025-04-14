@@ -32,13 +32,13 @@ export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
                             <h4 className="font-bold">{userName}</h4>
                         </Link>
                         <p className='pl-2'>{comment}</p>
-                        <div className={`${openOptions ? 'flex' : 'hidden'} flex-col gap-3 items-start bg-white border-1 absolute top-3 right-0 border-gray-500 rounded-lg shadow-md p-2 w-24`}>
+                        <div className={`${openOptions ? 'flex' : 'hidden'} flex-col gap-3 items-start bg-white border-1 absolute top-3 right-0 border-gray-500 rounded-lg shadow-md p-2 w-32`}>
                             {
                                 (auth?.role === 'admin' || auth?.user === userName)
                                 && (
                                     <button
                                         onClick={() => auth.deleteComment(articleId, commentId)}
-                                        className=" text-black text-sm font-bold hover:text-primary"
+                                        className=" text-black text-sm font-bold hover:text-primary w-full text-start"
                                     >
                                         Delete
                                     </button>
@@ -48,7 +48,7 @@ export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
                                 auth?.user === userName && (
                                     <button
                                         onClick={() => auth.setIsEditComment(true)}
-                                        className="text-black text-sm font-bold hover:text-primary"
+                                        className="text-black text-sm font-bold hover:text-primary w-full text-start"
                                     >
                                         Edit
                                     </button>
