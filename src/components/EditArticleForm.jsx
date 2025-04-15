@@ -14,7 +14,10 @@ export const EditArticleForm = () => {
     console.log(category)
     return (
         <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
-            <h1 className='text-2xl font-bold bg-blue-500'>Edit Article</h1>
+            <h1
+                className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
+                    Edit Article
+            </h1>
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
@@ -22,40 +25,40 @@ export const EditArticleForm = () => {
                 }} 
                 className="flex flex-col gap-4 w-4/6 min-w-72 mx-auto p-4 "
             >
-                <label htmlFor="title" className="bg-amber-300">Edit Title</label>
+                <label htmlFor="title" className="bg-primary text-white rounded-md">Edit Title</label>
                 <input 
                     type="text"
                     id="title"
                     value={title}
-                    className="border border-blue-500 p-2 text-center bg-white"
+                    className="border border-primary rounded-md p-2 text-center bg-white"
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <label htmlFor="content" className="bg-amber-300">Edit Content</label>
+                <label htmlFor="content" className="bg-primary text-white rounded-md">Edit Content</label>
                 <textarea 
                     type="text"
                     id="content"
                     value={content}
-                    className="border border-blue-500 p-2 text-center bg-white h-48"
+                    className="border border-primary rounded-md p-2 text-center bg-white h-48"
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <label htmlFor="author" className="bg-amber-300">Edit Author</label>
+                <label htmlFor="author" className="bg-primary text-white rounded-md">Edit Author</label>
                 <input 
                     type="text"
                     id="author"
                     value={author}
-                    className="border border-blue-500 p-2 text-center bg-white"
+                    className="border border-primary rounded-md p-2 text-center bg-white"
                     onChange={(e) => setAuthor(e.target.value)}
                 />
-                <label htmlFor="date" className="bg-amber-300">Edit Date</label>
+                <label htmlFor="date" className="bg-primary text-white rounded-md">Edit Date</label>
                 <input 
                     type="text"
                     id="date"
                     value={date}
-                    className="border border-blue-500 p-2 text-center bg-white" 
+                    className="border border-primary rounded-md p-2 text-center bg-white" 
                     onChange={(e) => setDate(e.target.value)}
                 />
                 <select
-                    className="border border-blue-500 p-2 text-center bg-white"  
+                    className="border border-primary rounded-md p-2 text-center bg-white"  
                     name="category"
                     id="category"
                     onChange={(e) => e.target.value && setCategory(e.target.value)}
@@ -68,7 +71,7 @@ export const EditArticleForm = () => {
                     <option value="Esports">Esports</option>
                 </select>
                 <button 
-                    className="bg-blue-500 text-white p-2 rounded-lg"
+                    className="bg-primary text-white rounded-md p-2 rounded-lg"
                     type="submit"
                 >
                     Submit
