@@ -117,6 +117,7 @@ export const UserProvider = ({ children }) => {
         }
 
         dispatch({ type: 'LOGIN', payload: { username, role: user.role } })
+        console.log(location.state?.from)
         navigate(location.state?.from ? location.state.from.pathname : '/')
     }
 

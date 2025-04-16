@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../context/UserContext';
 import { Comment } from '../../components/Comment';
@@ -6,6 +6,7 @@ import { ArticleAside } from '../../components/ArticleAside';
 export const Article = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const auth = useAuth()
+    const location = useLocation();
     const { articleId } = useParams();
     const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
     const related = auth.articles?.filter(article => article.category === currentArticle?.category);
@@ -53,7 +54,7 @@ export const Article = () => {
                         {currentArticle?.content}
                     </p>           
                 </div>
-                <div className='col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
+                <div className='col-span-3 lg:col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
                     <h2 className='text-xl font-bold'>Comments</h2>
                     {currentArticle?.comments?.map(comment => (
                         <div key={comment.id} className='flex flex-col gap-2 bg-white p-2 rounded-lg '>
@@ -83,13 +84,13 @@ export const Article = () => {
                                 </div>
                             </form>
                         ) : (
-                            <Link to='/login' className='sticky bottom-0'>
+                            <Link to='/login' state={{ from: location }} className='sticky bottom-0'>
                                 <button className='text-white bg-primary p-2 rounded-lg'>Log In To Leave A Comment</button>
                             </Link>
                         )
                     }
                 </div>
-                <div className='flex p-4 gap-4 w-full col-span-3 flex-col lg:flex-row items-center'>
+                <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
                     {
                         auth.favorites.some(favorite => favorite.id === currentArticle?.id) ? (
                             <button onClick={() => auth.handleFavorites(currentArticle?.id)} className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56' >Remove From Favorites</button>
