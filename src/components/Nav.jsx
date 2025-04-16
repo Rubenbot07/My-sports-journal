@@ -34,6 +34,7 @@ export const Nav = () => {
             <ul className="flex justify-between gap-4 p-2 items-center bg-primary text-white">
                 <li className="flex items-center">
                     <button
+                            aria-label="Menu"
                             className="flex flex-col justify-between w-6 h-6 md:hidden focus:outline-none"
                             onClick={toggleMenu}
                         >
@@ -55,7 +56,7 @@ export const Nav = () => {
                         </button>
                     <div className="w-28 h-3.5 flex items-center">
                         <NavLink to="/">
-                            <img className="overflow-hidden" src={Logo} alt="Sports Journal Logo" />
+                            <img aria-label="Sports Journal" className="overflow-hidden" src={Logo} alt="Sports Journal Logo" />
                         </NavLink>
                     </div>
                 </li>
@@ -67,7 +68,9 @@ export const Nav = () => {
                                     {auth.user}
                                 </li>
                                 <li>
-                                    <button className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={auth.logout}>
+                                    <button
+                                        aria-label="Log out"
+                                        className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={auth.logout}>
                                         <LogOutSVG />
                                     </button>
                                 </li>                        
@@ -75,12 +78,14 @@ export const Nav = () => {
                         ) : (
                             <ul className="flex gap-2 font-semibold items-center">
                                 <li className="w-10 p-1">
-                                    <NavLink to="/login">
+                                    <NavLink to="/login" aria-label="Log in">
                                         <LogInSVG />
                                     </NavLink>
                                 </li>
-                                <li className="bg-white p-1 cursor-pointer text-primary rounded-sm hover:bg-primary hover:text-white">
-                                    Subscribe
+                                <li 
+                                    aria-label="Subscribe"
+                                    className="bg-white p-1 cursor-pointer text-primary rounded-sm hover:bg-primary hover:text-white">
+                                    <button>Subscribe</button>
                                 </li>
                             </ul>
                         )
