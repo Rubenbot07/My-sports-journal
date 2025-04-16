@@ -4,7 +4,6 @@ import { useState } from 'react'
 export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
     const [openOptions, setOpenOptions] = useState(false)
     const profilePhoto = auth?.users?.find(user => user.name === userName)?.photo
-    console.log(profilePhoto)
     const handleOptions = () => {
         setOpenOptions(!openOptions)
     }
@@ -47,7 +46,7 @@ export const Comment = ({ auth, comment, userName, commentId, articleId }) => {
                             {
                                 auth?.user === userName && (
                                     <button
-                                        onClick={() => auth.setIsEditComment(true)}
+                                        onClick={() => auth.updateComment(true)}
                                         className="text-black text-sm font-bold hover:text-primary w-full text-start"
                                     >
                                         Edit

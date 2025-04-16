@@ -1,17 +1,15 @@
 import { useParams } from "react-router-dom";
-import Articles from "../mock-data/sports-articles.json";
 import { useAuth } from "../context/UserContext";
 import { useState } from "react";
 export const EditArticleForm = () => {
     const auth = useAuth()
     const { articleId } = useParams();
-    const currentArticle = Articles.find(article => article.id === parseInt(articleId));
+    const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
     const [title, setTitle] = useState(currentArticle.title)
     const [content, setContent] = useState(currentArticle.content)
     const [author, setAuthor] = useState(currentArticle.author)
     const [date, setDate] = useState(currentArticle.publishedDate)
     const [category, setCategory] = useState(currentArticle.category)
-    console.log(category)
     return (
         <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
             <h1
@@ -71,7 +69,7 @@ export const EditArticleForm = () => {
                     <option value="Esports">Esports</option>
                 </select>
                 <button 
-                    className="bg-primary text-white rounded-md p-2 rounded-lg"
+                    className="bg-primary text-white p-2 rounded-lg"
                     type="submit"
                 >
                     Submit
