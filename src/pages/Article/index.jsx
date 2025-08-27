@@ -1,58 +1,71 @@
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { useAuth } from '../../context/UserContext';
-import { Comment } from '../../components/Comment';
-import { ArticleAside } from '../../components/ArticleAside';
+import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/UserContext';
+import { Comment } from '@/components/Comment';
+import { ArticleAside } from '@/components/ArticleAside';
+import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { getArticleById } from '../../services/getArticleById';
 export const Article = () => {
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
-    const auth = useAuth()
-    const location = useLocation();
+    const [article, setArticle] = useState([]);
+    // const { id } = useParams();
     const { articleId } = useParams();
-    const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
-    const related = auth.articles?.filter(article => article.category === currentArticle?.category);
-    const handleComment = (e) => {
-        e.preventDefault();
-        const comment = e.target.comment.value;
-        if (comment) {
-            auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
-            e.target.comment.value = '';
+  useEffect(() => {
+    getArticleById(articleId)
+      .then(setArticle)
+      .catch(console.error);
+  }, [articleId]);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const auth = useAuth()
+  const location = useLocation();
+  const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
+  const handleComment = (e) => {
+      e.preventDefault();
+      const comment = e.target.comment.value;
+      if (comment) {
+          auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
+          e.target.comment.value = '';
         }
     }
     const handleImageLoad = () => {
         setIsImageLoaded(true);
     };
-
+    if(!article) {
+        return <h1>Loading...</h1>
+    }
     return (
         <section className='text-center w-full mx-auto flex flex-col gap-8 max-w-[1500px]'>
             <h3 className='bg-gray-300 p-2 w-fit rounded-sm border-l-4 border-l-primary cursor-pointer'>
-                <Link to={`/category/${currentArticle?.category}`} >{currentArticle?.category} <span className='text-primary font-bold'>/</span> {currentArticle?.publishedDate}</Link>
+                <Link to={`/category/${article[0]?.categories.slug}`} >{article[0]?.categories.name} <span className='text-primary font-bold'>/</span> {new Date(article[0]?.published_at).toLocaleDateString()}</Link>
             </h3>
             <i className='flex gap-2 text-lg text-start text-gray-500'>
                 By
-                <Link to={`/authors/${currentArticle?.author}`} className='underline font-bold'>
-                    {currentArticle?.author}
+                <Link to={`/authors/${article[0]?.profiles.display_name}`} className='underline font-bold'>
+                    {article[0]?.profiles.display_name}
                 </Link>
                 Sport Journal
             </i>
             <h1
                 className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
-                    {currentArticle?.title}
+                    {article[0]?.title}
             </h1>
             <section className='grid grid-cols-1 lg:grid-cols-4 lg:max-w-[1500px] w-full py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
                     <picture className={`col-span-3 overflow-hidden relative rounded-xl ${isImageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+                        <source media="(min-width: 1024px)" srcSet={`${article[0]?.media.find((img) => img.role === 'banner')?.url}`} />
+                                <source media="(min-width: 640px)" srcSet={`${article[0]?.media.find((img) => img.role === 'cover')?.url}`} />
+                                <source media="(max-width: 639px)" srcSet={`${article[0]?.media.find((img) => img.role === 'thumbnail')?.url}`} />
                         <img 
-                            src={currentArticle?.image}
-                            alt={currentArticle?.title} 
+                            src={article[0]?.media.find((img) => img.role === 'thumbnail')?.url}
+                            alt={article[0]?.title} 
                             onLoad={handleImageLoad}
                             className='w-full h-full md:object-cover object-fill' />
                     </picture>
-                <ArticleAside articles={related} title='Related' paragraph='Check out related articles' quantity={3} />
+                <ArticleAside categoryId={article[0]?.categories.id} articleId={article[0]?.id} />
             </section>
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
                 <div className='col-span-3 overflow-hidden relative rounded-xl'>
-                    <p className=' p-4 text-lg whitespace-pre-line text-justify'>
-                        {currentArticle?.content}
-                    </p>           
+                    <div className=' p-4 text-lg whitespace-pre-line text-justify'>
+                        <MarkdownRenderer content={article[0]?.content_markdown}/>
+                    </div>           
                 </div>
                 <div className='col-span-3 lg:col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
                     <h2 className='text-xl font-bold'>Comments</h2>
