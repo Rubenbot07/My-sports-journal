@@ -1,13 +1,21 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 import { useAuth } from "../../context/UserContext"
+import { useLogin } from "@/hooks/useLogin"
 export const Login = () => {
     const auth = useAuth()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-
-    const loginUser = (e) => {
+    const { login, loading } = useLogin()
+    const navigate = useNavigate()
+    const loginUser = async (e) => {
         e.preventDefault()
-        auth.login({ username, userPassword: password })
+        const { user, error } = await login(username, password)
+        if (user) {
+            navigate('/')
+        } else {
+            console.error('Login failed:', error)
+        }
     }
 
     return (
@@ -56,7 +64,7 @@ export const Login = () => {
                         className="bg-primary cursor-pointer rounded-xl text-amber-50 w-1/2 p-2 mx-auto"
                         type="submit"
                     >
-                        Log In
+                        {loading ? 'Logging in...' : 'Log In'}
                     </button>
                     {/* Divider with "OR" */}
                     <div className="flex items-center gap-4 my-4">

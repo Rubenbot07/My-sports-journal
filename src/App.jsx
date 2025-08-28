@@ -13,7 +13,45 @@ import { PrivateRoute } from './components/PrivateRoute'
 import { PublicRoute } from './components/PublicRoute'
 import { UserProvider } from './context/UserContext'
 import { MostPopular } from './pages/MostPopular'
+import { useUserStore } from '@/stores/userStore'
+import { supabase } from '@/supabaseClient'
+import { useEffect } from 'react'
+import { getProfile } from '@/services/getProfile'
 function App() {
+
+  const setAuthUser = useUserStore((state) => state.setAuthUser);
+  const setUser = useUserStore((state) => state.setUser);
+  useEffect(() => {
+    // 1. Obtener la sesión inicial
+    const getSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        setAuthUser(data.session.user);
+        const profile = await getProfile(data.session.user.email);
+        setUser(profile);
+      }
+    };
+    getSession();
+
+    // 2. Escuchar cambios de auth (login, logout, refresh)
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setAuthUser(session?.user || null);
+        if (session?.user) {
+          getProfile(session.user.email).then((profile) => {
+            setUser(profile);
+          });
+        } else {
+          setUser(null);
+        }
+      }
+    );
+
+    // 3. Cleanup
+    return () => {
+      subscription.subscription.unsubscribe();
+    };
+  }, [setAuthUser, setUser]);
   const AppRoutes = () => {
     return useRoutes([
       {

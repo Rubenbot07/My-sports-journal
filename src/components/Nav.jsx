@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom"
-import { useAuth } from "../context/UserContext"
 import { useState, useEffect, useRef } from "react"
 import Logo from '../assets/sportsJournalLogo.png'
 import { ChevronSVG } from "../assets/icons/ChevronSVG"
 import { LogOutSVG } from "../assets/icons/LogOutSVG"
 import { LogInSVG } from "../assets/icons/LogInSVG"
+import { useUserStore } from "@/stores/userStore"
+import { useLogout } from "@/hooks/useLogout" 
 
 
 export const Nav = () => {
-    const auth = useAuth()
+    const { logout } = useLogout()
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const categoriesRef = useRef(null)
+    const authUser = useUserStore((state) => state.authUser);
+    const profileUser = useUserStore((state) => state.user);
     const handleClickOutside = (event) => {
         if (categoriesRef.current && !categoriesRef.current.contains(event.target)) {
             setIsCategoriesOpen(false)
@@ -28,7 +31,6 @@ export const Nav = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
-
     return (
         <nav className=" flex flex-col justify-between">
             <ul className="flex justify-between gap-4 p-2 items-center bg-primary text-white">
@@ -62,15 +64,15 @@ export const Nav = () => {
                 </li>
                 <li >
                     {
-                        auth.user ? (
+                        profileUser ? (
                             <ul className="flex gap-2 font-semibold">
                                 <li className="flex items-center">
-                                    {auth.user}
+                                    {profileUser?.display_name ? profileUser.display_name : profileUser?.email}
                                 </li>
                                 <li>
                                     <button
                                         aria-label="Log out"
-                                        className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={auth.logout}>
+                                        className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={logout}>
                                         <LogOutSVG />
                                     </button>
                                 </li>                        
@@ -103,9 +105,9 @@ export const Nav = () => {
                     <NavLink to="/most-popular" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Most Popular</NavLink>
                 </li>
                 {
-                    auth.user && (
+                    authUser && (
                         <li className="hover:text-primary">
-                            <NavLink to={`/profile/${auth.user}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
+                            <NavLink to={`/profile/${authUser.id}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
                         </li>
                     )
                 }

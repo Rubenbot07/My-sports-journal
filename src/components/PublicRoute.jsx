@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/UserContext";
+import { useUserStore } from "@/stores/userStore";
 
 export const PublicRoute = ({ children }) => {
     const location = useLocation();
-    const auth = useAuth();
+    const user = useUserStore((state) => state.user);
 
-    if (auth.user) {
+    if (user) {
         const redirectTo = location.state?.from?.pathname || '/';
         return <Navigate to={redirectTo} />;
     }
