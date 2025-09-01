@@ -6,6 +6,7 @@ export async function getArticleById(id) {
     .select(`*, media(*), categories(*), profiles!articles_author_id_fkey (display_name)`)
     .eq('id', id)
     .eq('status', 'published')
+    .single();
   if (error) throw error;
   return data;
 }

@@ -19,7 +19,7 @@ export const ArticleLink = ({ article, isThird }) => {
                             <div className='hidden lg:flex lg:flex-col gap-8 p-3 '>
                                 <p className='text-black'>{article.excerpt}</p>
                             </div>
-                            <i className='sm:absolute flex top-0 right-0 text-2xl md:w-1/4 text-center bg-primary text-white p-2 font-bold rounded-bl-lg sm:rounded-tl-lg sm:rounded-bl-none rounded-br-lg'>Most Read</i>
+                            <i className='sm:absolute flex bottom-0 right-0 text-2xl md:w-1/4 text-center bg-primary text-white p-2 font-bold rounded-bl-lg sm:rounded-tl-lg sm:rounded-bl-none rounded-br-lg'>Most Read</i>
                         </>
                     )
                 }

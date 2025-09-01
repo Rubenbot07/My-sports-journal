@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react";
+import { getArticles } from "@/services/getArticles";
+import { useArticleStore } from "@/stores/articleStore";
+export const useArticlesList = (limit) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { setArticles } = useArticleStore();
+
+
+  useEffect(() => {
+    setLoading(true);
+    const fetch = async () => {
+      try {
+        const data = await getArticles(limit);
+        setArticles(data);
+      } catch (err) {
+        console.error("Failed to fetch articles:", err);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+
+    };
+    fetch();
+  }, [limit, setArticles]);
+    return { loading, error };
+};
