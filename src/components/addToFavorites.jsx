@@ -17,6 +17,7 @@ export const AddToFavorites = ({ articleId }) => {
             setIsSaved(true);
         } catch (err) {
             setError('Failed to save to favorites. Please try again.' + err.message);
+            setIsSaved(false);
         }
     };
 
