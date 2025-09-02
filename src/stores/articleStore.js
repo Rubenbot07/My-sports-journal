@@ -5,4 +5,6 @@ export const useArticleStore = create((set) => ({
     article: null,
     setArticle: (article) => set({ article }),
     setArticles: (articles) => set({ articles }),
+    isSaved: false,
+    setIsSaved: (isSaved) => set({ isSaved }),
 }));

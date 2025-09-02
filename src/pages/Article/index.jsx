@@ -6,32 +6,33 @@ import { ArticleAside } from '@/components/ArticleAside';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { useArticleId } from '@/hooks/useArticleId';
 import { useArticleStore } from '@/stores/articleStore';
-import { AddToFavorites } from '@/components/addToFavorites';
-import { RemoveFromFavorites } from '@/components/removeFromFavorites';
+import { BookmarkButtonsContainer } from '@/components/BookmarkButtonsContainer';
+import { useUserStore } from '@/stores/userStore';
 export const Article = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const user = useUserStore((state) => state.user);
     const auth = useAuth()
     const location = useLocation();
     const { articleId } = useParams();
     const { loading, error } = useArticleId(articleId);
     const { article } = useArticleStore();
-    if (loading) return <h1>Loading...</h1>;
-    if (error) return <h1>Error loading article: {error.message}</h1>;
-  const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
-  const handleComment = (e) => {
-      e.preventDefault();
-      const comment = e.target.comment.value;
-      if (comment) {
-          auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
-          e.target.comment.value = '';
+    const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
+
+
+    const handleComment = (e) => {
+        e.preventDefault();
+        const comment = e.target.comment.value;
+        if (comment) {
+            auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
+            e.target.comment.value = '';
         }
     }
     const handleImageLoad = () => {
         setIsImageLoaded(true);
     };
-    if(!article) {
-        return <h1>Loading...</h1>
-    }
+
+    if (loading) return <h1>Loading...</h1>;
+    if (error) return <h1>Error loading article: {error.message}</h1>;
     return (
         <section className='text-center w-full mx-auto flex flex-col gap-8 max-w-[1500px]'>
             <h3 className='bg-gray-300 p-2 w-fit rounded-sm border-l-4 border-l-primary cursor-pointer'>
@@ -104,10 +105,7 @@ export const Article = () => {
                     }
                 </div>
                 <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
-                    <div className='w-full flex justify-center md:justify-start'>
-                        <AddToFavorites articleId={article?.id} />
-                        <RemoveFromFavorites articleId={article?.id} />
-                    </div>
+                    <BookmarkButtonsContainer articleId={article?.id} userId={user?.id} />
                     {
                         auth?.role === 'admin' && (
                             <>
