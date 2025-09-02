@@ -1,6 +1,5 @@
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '@/context/UserContext';
 import { Comment } from '@/components/Comment';
 import { ArticleAside } from '@/components/ArticleAside';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
@@ -11,26 +10,25 @@ import { useUserStore } from '@/stores/userStore';
 export const Article = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const user = useUserStore((state) => state.user);
-    const auth = useAuth()
     const location = useLocation();
+    const roles = useUserStore((state) => state.roles).map(r => r.name);
     const { articleId } = useParams();
     const { loading, error } = useArticleId(articleId);
     const { article } = useArticleStore();
-    const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
-
 
     const handleComment = (e) => {
         e.preventDefault();
-        const comment = e.target.comment.value;
-        if (comment) {
-            auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
-            e.target.comment.value = '';
-        }
+        // const comment = e.target.comment.value;
+        // if (comment) {
+        //     auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
+        //     e.target.comment.value = '';
+        // }
     }
     const handleImageLoad = () => {
         setIsImageLoaded(true);
     };
 
+    if(!roles) return null;
     if (loading) return <h1>Loading...</h1>;
     if (error) return <h1>Error loading article: {error.message}</h1>;
     return (
@@ -68,7 +66,7 @@ export const Article = () => {
                         <MarkdownRenderer content={article?.content_markdown}/>
                     </div>           
                 </div>
-                <div className='col-span-3 lg:col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
+                {/* <div className='col-span-3 lg:col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
                     <h2 className='text-xl font-bold'>Comments</h2>
                     {currentArticle?.comments?.map(comment => (
                         <div key={comment.id} className='flex flex-col gap-2 bg-white p-2 rounded-lg '>
@@ -103,20 +101,20 @@ export const Article = () => {
                             </Link>
                         )
                     }
-                </div>
+                </div> */}
                 <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
                     <BookmarkButtonsContainer articleId={article?.id} userId={user?.id} />
                     {
-                        auth?.role === 'admin' && (
+                        roles?.includes('admin') && (
                             <>
                                 <button
-                                    onClick={() => auth.deleteArticle(currentArticle?.id)}
+                                    // onClick={() => auth.deleteArticle(currentArticle?.id)}
                                     className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56'
                                 >
                                     Delete
                                 </button>
                                 <button className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56'>
-                                    <Link to={`/articles/edit/${currentArticle?.id}`}>
+                                    <Link to={`/articles/edit/${article?.id}`}>
                                         Edit
                                     </Link>
                                 </button>
@@ -124,7 +122,7 @@ export const Article = () => {
                         )
                     }
                     {
-                        auth?.role === 'editor' && (
+                        roles?.includes('editor') || roles === 'editor' && (
                             <>
                                 <button className='bg-primary cursor-pointer text-white p-2 rounded-lg'>
                                     Edit
@@ -134,7 +132,6 @@ export const Article = () => {
                     }
                 </div>
             </section>
-
         </section>
     )
 } 

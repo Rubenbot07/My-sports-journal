@@ -1,6 +1,7 @@
 import { saveBookmark } from "@/services/saveBookmark";
 import { removeBookmark } from "@/services/removeBookmark";
 import { getBookmarkByArticleId } from "@/services/getBookmarkByArticleId";
+import { getBookmarksByUser } from "@/services/getBookmarksByUser";
 import { useArticleStore } from "@/stores/articleStore";
 import { useCallback } from "react";
 
@@ -38,7 +39,17 @@ export function useBookmarks() {
         }
     }, [setIsSaved]);
 
+    const getBookmarsByUserId = async (userId) => {
+        try {
+            const bookmarks = await getBookmarksByUser(userId);
+            return bookmarks;
+        } catch (error) {
+            console.error('Failed to get bookmarks:', error);
+            throw error;
+        }
+    };
 
 
-    return { handleSaveBookmark, handleRemoveBookmark, handleCheckBookmark };
+
+    return { handleSaveBookmark, handleRemoveBookmark, handleCheckBookmark, getBookmarsByUserId };
 }

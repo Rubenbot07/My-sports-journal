@@ -1,9 +1,27 @@
-import { useAuth } from "../../context/UserContext"
 import { ArticlesGalleryLayout } from "../../components/ArticlesGalleryLayout"
+import { useBookmarks } from "@/hooks/useBookmarks"
+import { useUserStore } from "@/stores/userStore"
+import { useEffect, useState } from "react"
+
 
 export const Favorites = () => {
-    const auth = useAuth()
+    const user = useUserStore((state) => state.user);
+    const { getBookmarsByUserId } = useBookmarks();
+
+    const [favorites, setFavorites] = useState([]);
+
+    useEffect(() => {
+        const fetchFavorites = async () => {
+            if (user) {
+                const bookmarks = await getBookmarsByUserId(user.id);
+                setFavorites(bookmarks);
+            }
+        };
+        fetchFavorites();
+    }, [user]);
+
+
     return (
-        <ArticlesGalleryLayout title='Favorites' articles={auth.favorites} />
+        <ArticlesGalleryLayout title='Favorites' articles={favorites} />
     )
 }

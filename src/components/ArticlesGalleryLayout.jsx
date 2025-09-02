@@ -8,8 +8,8 @@ export const ArticlesGalleryLayout = ({ title, articles}) => {
                     {title}
             </h1>
             {
-                articles.map((article) => (
-                    <ArticleOfCategories  key={article.id} article={article} isSingle={isSingleArticle}/>
+                articles.map((item) => (
+                    <ArticleOfCategories  key={item.articles.id} article={item.articles} isSingle={isSingleArticle}/>
                 ))
             }
 
