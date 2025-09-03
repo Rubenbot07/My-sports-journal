@@ -39,7 +39,7 @@ export function useBookmarks() {
         }
     }, [setIsSaved]);
 
-    const getBookmarsByUserId = async (userId) => {
+    const getBookmarsByUserId = useCallback(async (userId) => {
         try {
             const bookmarks = await getBookmarksByUser(userId);
             return bookmarks;
@@ -47,7 +47,7 @@ export function useBookmarks() {
             console.error('Failed to get bookmarks:', error);
             throw error;
         }
-    };
+    }, []);
 
 
 

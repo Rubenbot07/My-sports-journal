@@ -5,7 +5,7 @@ import { ArticleAside } from '@/components/ArticleAside';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { useArticleId } from '@/hooks/useArticleId';
 import { useArticleStore } from '@/stores/articleStore';
-import { BookmarkButtonsContainer } from '@/components/BookmarkButtonsContainer';
+import { ActionButtonsContainer } from '@/components/ActionButtonsContainer';
 import { useUserStore } from '@/stores/userStore';
 export const Article = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -103,7 +103,7 @@ export const Article = () => {
                     }
                 </div> */}
                 <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
-                    <BookmarkButtonsContainer articleId={article?.id} userId={user?.id} />
+                    <ActionButtonsContainer articleId={article?.id} userId={user?.id} />
                     {
                         roles?.includes('admin') && (
                             <>

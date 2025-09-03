@@ -14,11 +14,11 @@ export const Favorites = () => {
         const fetchFavorites = async () => {
             if (user) {
                 const bookmarks = await getBookmarsByUserId(user.id);
-                setFavorites(bookmarks);
+                setFavorites(bookmarks || []);
             }
         };
         fetchFavorites();
-    }, [user]);
+    }, [user, getBookmarsByUserId]);
 
 
     return (
