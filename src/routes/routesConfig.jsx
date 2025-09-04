@@ -19,7 +19,7 @@ export const routesConfig = [
 
   { path: "/favorites", element: <PrivateRoute><Favorites /></PrivateRoute> },
   { path: "/profile", element: <PrivateRoute><Profile /></PrivateRoute> },
-  { path: "/profile/:userName", element: <Profile /> },
+  { path: "/profile/:userEmail", element: <Profile /> },
 
   { path: "/login", element: <PublicRoute><Login /></PublicRoute> },
 

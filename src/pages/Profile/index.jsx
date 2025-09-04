@@ -1,7 +1,13 @@
 import { useUserStore } from '@/stores/userStore'
+import { useProfile } from '@/hooks/useProfile'
+import { useParams } from 'react-router'
 
 export const Profile = () => {
     const { user, roles } = useUserStore()
+    const { userEmail } = useParams();
+    const { profile, loading } = useProfile(userEmail)
+
+    if (loading) return <h1>Loading...</h1>;
 
     return (
         <section className='text-center w-full max-w-[1500px] mx-auto flex flex-col gap-8'>
@@ -12,28 +18,32 @@ export const Profile = () => {
             <div className='h-20'></div>
             <section className='relative max-w-[600px] mx-auto min-w-4/4 md:min-w-[600px] bg-primary px-1 rounded-lg flex flex-col gap-2 pt-28 pb-4'> 
                 <div className='w-40 h-40 absolute -top-14 left-1/2 -translate-x-1/2 rounded-full border-4 border-primary bg-gray-300 overflow-hidden mx-auto'>
-                    <img src={user?.photo ? user.photo.src : '/src/assets/defaultAvatar.webp'} alt={user?.display_name} className='w-full h-full' />
+                    <img src={profile?.avatar_url ? profile?.avatar_url : '/src/assets/defaultAvatar.webp'} alt={profile?.display_name} className='w-full h-full' />
                 </div>
-                <p className='text-xl font-bold text-white'>{user?.display_name}</p>
+                <p className='text-xl font-bold text-white'>{profile?.display_name}</p>
                 <div className='flex flex-col justify-around text-lg text-white'>
-                    <span>{user?.email}</span>
+                    <span>{profile?.email}</span>
                 </div>
                     <>
                         <div className='flex flex-col justify-around px-4 text-lg text-white'>
-                            <span>{user?.phone}</span>
+                            <span>{profile?.bio}</span>
                         </div>
-                        <div className='flex flex-col justify-around px-4 text-lg text-white'>
-                            <div className='flex gap-1 justify-center'>
-                                <span className='font-bold'>Roles:</span>
-                                {roles.length > 0 ? (
-                                    roles.map((role) => (
-                                        <span key={role.id}>{role.name}</span>
-                                    ))
-                                ) : (
-                                    <span>No roles assigned</span>
-                                )}
-                            </div>
-                        </div>
+                        {
+                            profile?.id === user?.id && (
+                                <div className='flex flex-col justify-around px-4 text-lg text-white'>
+                                    <div className='flex gap-1 justify-center'>
+                                        <span className='font-bold'>Roles:</span>
+                                        {roles?.length > 0 ? (
+                                            roles.map((role) => (
+                                                <span key={role.id}>{role.name}</span>
+                                            ))
+                                        ) : (
+                                            <span>No roles assigned</span>
+                                        )}
+                                    </div>
+                                </div>
+                            )
+                        }
                     </>
             </section>
         </section>

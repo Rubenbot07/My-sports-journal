@@ -107,7 +107,7 @@ export const Nav = () => {
                 {
                     authUser && (
                         <li className="hover:text-primary">
-                            <NavLink to={`/profile/${authUser.id}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
+                            <NavLink to={`/profile/${authUser.email}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
                         </li>
                     )
                 }
