@@ -1,6 +1,7 @@
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Comment } from '@/components/Comment';
+import { CommentContainer } from '@/components/CommentContainer';
 import { ArticleAside } from '@/components/ArticleAside';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { useArticleId } from '@/hooks/useArticleId';
@@ -10,25 +11,26 @@ import { useUserStore } from '@/stores/userStore';
 export const Article = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const user = useUserStore((state) => state.user);
-    const location = useLocation();
     const roles = useUserStore((state) => state.roles).map(r => r.name);
     const { articleId } = useParams();
     const { loading, error } = useArticleId(articleId);
     const { article } = useArticleStore();
 
-    const handleComment = (e) => {
-        e.preventDefault();
-        // const comment = e.target.comment.value;
-        // if (comment) {
-        //     auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
-        //     e.target.comment.value = '';
-        // }
-    }
+    if (loading) return <h1>Loading...</h1>;
+    if (error) return <h1>Error loading article: {error.message}</h1>;
+
+    // const handleComment = (e) => {
+    //     e.preventDefault();
+    //     // const comment = e.target.comment.value;
+    //     // if (comment) {
+    //     //     auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
+    //     //     e.target.comment.value = '';
+    //     // }
+    // }
     const handleImageLoad = () => {
         setIsImageLoaded(true);
     };
 
-    if(!roles) return null;
     if (loading) return <h1>Loading...</h1>;
     if (error) return <h1>Error loading article: {error.message}</h1>;
     return (
@@ -66,42 +68,7 @@ export const Article = () => {
                         <MarkdownRenderer content={article?.content_markdown}/>
                     </div>           
                 </div>
-                {/* <div className='col-span-3 lg:col-span-1 flex flex-col gap-4 bg-gray-200 h-fit lg:max-h-[800px] lg:overflow-scroll  p-4 rounded-lg'>
-                    <h2 className='text-xl font-bold'>Comments</h2>
-                    {currentArticle?.comments?.map(comment => (
-                        <div key={comment.id} className='flex flex-col gap-2 bg-white p-2 rounded-lg '>
-                            <Comment auth={auth} comment={comment.content} commentId={comment.id} articleId={currentArticle?.id} userName={comment.userName} />
-                        </div>
-                    ))}
-                    {
-                        auth.user ? (
-                            <form
-                                onSubmit={(e) => {handleComment(e)}
-                                }
-                                className='flex flex-col gap-2'
-                            >
-                                <div className='flex justify-between gap-1 border border-gray-300 rounded-lg p-2 bg-white'>
-                                    <input
-                                        type='text'
-                                        name='comment'
-                                        placeholder='Add a comment...'
-                                        className='w-full outline-none'
-                                    />
-                                    <button
-                                        type='submit'
-                                        className='text-primary'
-                                    >
-                                        Post
-                                    </button>
-                                </div>
-                            </form>
-                        ) : (
-                            <Link to='/login' state={{ from: location }} className='sticky bottom-0'>
-                                <button className='text-white bg-primary p-2 rounded-lg'>Log In To Leave A Comment</button>
-                            </Link>
-                        )
-                    }
-                </div> */}
+                <CommentContainer articleId={article?.id} />
                 <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
                     <ActionButtonsContainer articleId={article?.id} userId={user?.id} />
                     {

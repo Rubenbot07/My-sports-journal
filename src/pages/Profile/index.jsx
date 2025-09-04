@@ -3,7 +3,6 @@ import { useUserStore } from '@/stores/userStore'
 export const Profile = () => {
     const { user, roles } = useUserStore()
 
-
     return (
         <section className='text-center w-full max-w-[1500px] mx-auto flex flex-col gap-8'>
             <h1

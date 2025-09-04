@@ -62,4 +62,19 @@ export function useAuthSession() {
       }
     };
   }, [setAuthUser, setUser, setRoles]);
+
+  const getProfileAndRoles = async (email, userId) => {
+    try {
+      const profile = await getProfile(email);
+      setUser(profile);
+      const roles = await getUserRoles(userId);
+      setRoles(roles);
+    } catch (err) {
+      console.error("useAuthSession getProfileAndRoles error:", err);
+      setUser(null);
+      setRoles([]);
+    }
+  }
+
+  return { getProfileAndRoles };
 }
