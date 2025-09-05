@@ -19,7 +19,7 @@ export const Home = () => {
                                 <source media="(min-width: 1024px)" srcSet={`${mainArticle?.media.find((img) => img.role === 'banner')?.url}`} />
                                 <source media="(min-width: 640px)" srcSet={`${mainArticle?.media.find((img) => img.role === 'cover')?.url}`} />
                                 <source media="(max-width: 639px)" srcSet={`${mainArticle?.media.find((img) => img.role === 'thumbnail')?.url}`} />
-                                <img src={mainArticle?.media.find((img) => img.role === 'thumbnail')} alt={mainArticle?.title} className='w-full h-full md:object-cover hover:scale-105 transition-all duration-500 ' />
+                                <img fetchPriority='high' src={mainArticle?.media.find((img) => img.role === 'thumbnail')} alt={mainArticle?.title} className='w-full h-full md:object-cover hover:scale-105 transition-all duration-500 ' />
                             </picture>
                             <div className='absolute bg-blue-800/60 bottom-0 left-0 p-2 text-center text-lg md:text-3xl md:p-4 text-white font-bold w-full'>
                                 <h2 className=''>{mainArticle?.title}</h2>

@@ -19,14 +19,6 @@ export const Article = () => {
     if (loading) return <h1>Loading...</h1>;
     if (error) return <h1>Error loading article: {error.message}</h1>;
 
-    // const handleComment = (e) => {
-    //     e.preventDefault();
-    //     // const comment = e.target.comment.value;
-    //     // if (comment) {
-    //     //     auth.addComment(currentArticle?.id, comment, auth.user, new Date().toLocaleDateString());
-    //     //     e.target.comment.value = '';
-    //     // }
-    // }
     const handleImageLoad = () => {
         setIsImageLoaded(true);
     };
@@ -46,7 +38,7 @@ export const Article = () => {
                 Sport Journal
             </i>
             <h1
-                className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
+                className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 min-h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
                     {article?.title}
             </h1>
             <section className='grid grid-cols-1 lg:grid-cols-4 lg:max-w-[1500px] w-full py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
@@ -62,6 +54,9 @@ export const Article = () => {
                     </picture>
                 <ArticleAside categoryId={article?.categories.id} articleId={article?.id} />
             </section>
+            <section>
+                <ActionButtonsContainer articleId={article?.id} userId={user?.id} />
+            </section>
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
                 <div className='col-span-3 overflow-hidden relative rounded-xl'>
                     <div className=' p-4 text-lg whitespace-pre-line text-justify'>
@@ -70,7 +65,6 @@ export const Article = () => {
                 </div>
                 <CommentContainer articleId={article?.id} />
                 <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
-                    <ActionButtonsContainer articleId={article?.id} userId={user?.id} />
                     {
                         roles?.includes('admin') && (
                             <>

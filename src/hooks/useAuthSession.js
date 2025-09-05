@@ -11,7 +11,6 @@ export function useAuthSession() {
   const setRoles = useUserStore((s) => s.setRoles);
 
   useEffect(() => {
-    // 1. Obtener la sesión inicial
     const getSession = async () => {
       try {
         const { data } = await supabase.auth.getSession();

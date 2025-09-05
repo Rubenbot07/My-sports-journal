@@ -18,3 +18,13 @@ export function onAuthStateChange(handler) {
   const { data } = supabase.auth.onAuthStateChange(handler);
   return data?.subscription;
 }
+
+export async function signUp({ email, password }) {
+    // Supabase v2
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+    })
+
+    return { data, error }
+}

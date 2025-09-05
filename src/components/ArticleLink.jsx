@@ -8,7 +8,7 @@ export const ArticleLink = ({ article, isThird }) => {
                         {/* <source media="(min-width: 1024px)" srcSet={`${article?.media.find((img) => img.role === 'banner')?.url}`} /> */}
                         <source media="(min-width: 640px)" srcSet={`${article?.media.find((img) => img.role === 'cover')?.url}`} />
                         <source media="(max-width: 639px)" srcSet={`${article?.media.find((img) => img.role === 'thumbnail')?.url}`} />
-                        <img src={article?.media.find((img) => img.role === 'thumbnail')} className='w-full h-full object-top object-cover hover:scale-105 transition-all duration-500 ' alt={article.title} />
+                        <img loading='lazy' src={article?.media.find((img) => img.role === 'thumbnail')} className='w-full h-full object-top object-cover hover:scale-105 transition-all duration-500 ' alt={article.title} />
                     </picture>
                     <div className='absolute w-32 top-0 right-0 px-1 text-center text-md text-white bg-primary font-bold'>{article.category}</div>
                 </div>

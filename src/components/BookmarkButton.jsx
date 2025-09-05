@@ -53,7 +53,7 @@ export const BookmarkButton = ({ articleId, userId }) => {
         disabled={loading}
         className={`p-2 rounded-full ${
           isSaved ? "text-red-500" : "text-gray-400"
-        } hover:text-blue-800 transition-colors`}
+        } hover:text-red-800 transition-colors`}
       >
         {isSaved ?  <Bookmark fill="currentColor" /> : <Bookmark />}
       </button>

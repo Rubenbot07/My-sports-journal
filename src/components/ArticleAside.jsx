@@ -4,9 +4,11 @@ import { getCategoriesById } from '@/services/getCategoriesById';
 
 export const ArticleAside = ({ categoryId, articleId }) => {
     const [articles, setArticles] = useState([]);
+    const [category , setCategory] = useState('');
     useEffect(() => {
-        if (!categoryId) return;
+        if (!categoryId || category === categoryId) return;
         const fetchArticles = async () => {
+            setCategory(categoryId);
             try {
                 const data = await getCategoriesById(categoryId);
                 if (data && data.length > 0) {
@@ -17,7 +19,7 @@ export const ArticleAside = ({ categoryId, articleId }) => {
             }
         };
         fetchArticles();
-    }, [categoryId, articleId]);
+    }, [categoryId, articleId, category]);
 
 
     return (

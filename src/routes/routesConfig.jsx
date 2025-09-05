@@ -5,6 +5,7 @@ import {MostPopular} from "@/pages/MostPopular";
 import {Favorites} from "@/pages/Favorites";
 import {Profile} from "@/pages/Profile";
 import {Login} from "@/pages/LogIn";
+import { SignUp } from "@/pages/Signup";
 import {Article} from "@/pages/Article";
 import {Author} from "@/pages/Author";
 import {EditArticleForm} from "@/components/EditArticleForm";
@@ -22,6 +23,7 @@ export const routesConfig = [
   { path: "/profile/:userEmail", element: <Profile /> },
 
   { path: "/login", element: <PublicRoute><Login /></PublicRoute> },
+  { path: "/register", element: <PublicRoute><SignUp /></PublicRoute> },
 
   {
     path: "/articles/edit/:articleId",

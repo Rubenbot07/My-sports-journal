@@ -4,10 +4,11 @@ import { useArticleStore } from "@/stores/articleStore";
 export const useArticlesList = (limit) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { setArticles } = useArticleStore();
+  const { articles, setArticles } = useArticleStore();
 
 
   useEffect(() => {
+    if(articles.length > 0) return;
     setLoading(true);
     const fetch = async () => {
       try {
@@ -22,6 +23,6 @@ export const useArticlesList = (limit) => {
 
     };
     fetch();
-  }, [limit, setArticles]);
+  }, [limit, setArticles, articles]);
     return { loading, error };
 };

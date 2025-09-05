@@ -28,7 +28,6 @@ export const LikeButton = ({ articleId, userId }) => {
         }
 
         if (hasLiked) {
-            console.log('unlike');
             setLoading(true);
             try {
                 await handleUnlike(articleId, userId);
@@ -51,17 +50,17 @@ export const LikeButton = ({ articleId, userId }) => {
     };
 
     return (
-        <div className="flex flex-col items-start">
+        <div className="flex items-center">
             <button
                 onClick={handleClick}
                 disabled={loading}
                 className={`p-2 rounded-full ${
-                    hasLiked ? 'text-blue-500' : 'text-gray-400'
-                } hover:text-blue-800 transition-colors`}
+                    hasLiked ? 'text-red-500' : 'text-gray-400'
+                } hover:text-red-800 transition-colors`}
             >
                 <ThumbsUp />
             </button>
-            <span className="text-sm mt-1">{likes}</span>
+            <span className="text-sm font-semibold mt-1 text-gray-500">{likes}</span>
             {error && <p className="text-red-500 mt-1">{error}</p>}
         </div>
     );
