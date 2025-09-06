@@ -87,7 +87,7 @@ export const Nav = () => {
                                 <li 
                                     aria-label="Subscribe"
                                     className="bg-white p-1 cursor-pointer text-primary rounded-sm hover:bg-primary hover:text-white">
-                                    <button>Subscribe</button>
+                                    <NavLink to="/register">Subscribe</NavLink>
                                 </li>
                             </ul>
                         )

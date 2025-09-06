@@ -3,6 +3,7 @@ import { signUp } from "@/services/authService";
 import { createProfile } from "@/services/createProfile";
 import { useNavigate } from "react-router";
 import { useUserStore } from "@/stores/userStore";
+import { createRole } from "@/services/createRole";
 
 export function useSignUp() {
     const [error, setError] = useState(null);
@@ -31,11 +32,10 @@ export function useSignUp() {
           return;
         }
 
-        console.log(data);
-
         // Crear el perfil del usuario
         const profile = await createProfile({username, email, authId: data.user.id});
-        console.log(profile);
+        await createRole(2, data.user.id);
+
         setUser(profile[0]);
         // Redirigir a la vista de inicio de sesión
         navigate("/");

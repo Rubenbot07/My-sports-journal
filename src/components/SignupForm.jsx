@@ -1,5 +1,4 @@
-import { useState, useTransition } from "react";
-import { signUp } from "@/services/authService";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSignUp } from "@/hooks/useSignup";
 
@@ -9,12 +8,10 @@ export function SignUpForm() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [username, setUsername] = useState("");
   const { handleSignUp, isLoading, error, isPending } = useSignUp();
-  //   const router = useRouter();
-//   const fetchUser = useUserStore.getState().fetchUser;
+
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(username)
     handleSignUp({ email, password, repeatPassword, username });
   };
 

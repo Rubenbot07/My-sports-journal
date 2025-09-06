@@ -55,7 +55,7 @@ export const Article = () => {
                 <ArticleAside categoryId={article?.categories.id} articleId={article?.id} />
             </section>
             <section>
-                <ActionButtonsContainer articleId={article?.id} userId={user?.id} />
+                <ActionButtonsContainer article={article} userId={user?.id} />
             </section>
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
                 <div className='col-span-3 overflow-hidden relative rounded-xl'>

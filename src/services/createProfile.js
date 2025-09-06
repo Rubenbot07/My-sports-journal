@@ -1,7 +1,6 @@
 import { supabase } from "@/supabaseClient";
 
 export async function createProfile({ username, email, authId }) {
-    console.log("Creating profile:", username, email, authId)
     try {
         const { data, error } = await supabase
             .from("profiles")

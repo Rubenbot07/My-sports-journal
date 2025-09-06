@@ -6,7 +6,7 @@ export const MostPopular = () => {
     useEffect(() => {
         const fetchMostPopular = async () => {
             try {
-                const data = await getMostBookmarkedArticles(6);
+                const data = await getMostBookmarkedArticles(10);
                 setMostPopular(data);
             } catch (error) {
                 console.error('Error fetching most popular articles:', error);
