@@ -1,14 +1,15 @@
 // hooks/useAuthSessionSimple.js
 import { useEffect } from "react";
 import { supabase } from "@/supabaseClient";
+import { getProfile } from "@/services/profileService";
 import { useUserStore } from "@/stores/userStore"; // ajusta la ruta si hace falta
-import { getProfile } from "@/services/getProfile"; // tu service para profile por email
-import { getUserRoles } from "@/services/getUserRoles"; // nuevo service para roles
+import { getUserRoles } from "@/services/rolesService"; // nuevo service para roles
 
 export function useAuthSession() {
   const setAuthUser = useUserStore((s) => s.setAuthUser);
   const setUser = useUserStore((s) => s.setUser);
   const setRoles = useUserStore((s) => s.setRoles);
+
 
   useEffect(() => {
     const getSession = async () => {
@@ -75,5 +76,13 @@ export function useAuthSession() {
     }
   }
 
-  return { getProfileAndRoles };
+  const logout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.error("useAuthSession logout error:", err);
+    }
+  } 
+
+  return { getProfileAndRoles, logout };
 }

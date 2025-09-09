@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "@/services/getArticles";
+import { getArticles } from "@/services/articlesService";
 import { useArticleStore } from "@/stores/articleStore";
 export const useArticlesList = (limit) => {
   const [loading, setLoading] = useState(false);

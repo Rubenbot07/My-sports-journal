@@ -1,7 +1,4 @@
-import { getComments } from "@/services/getComments";
-import { commentArticle } from "@/services/commentArticle";
-import { deleteComment } from "@/services/deleteComment";
-import { editComment } from "@/services/editComment";
+import { getComments, deleteComment, editComment, commentArticle } from "../services/commentsService";
 import { useEffect, useState } from "react";
 
 export function useComments(articleId) {

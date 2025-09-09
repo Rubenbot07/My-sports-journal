@@ -1,8 +1,5 @@
 import { useCallback, useState } from 'react';
-import { likeArticle } from '@/services/likeArticle';
-import { removeLike } from '@/services/removeLike';
-import { getArticleLikes } from '@/services/getLikesByArticle';
-import { getArticleLikeByUser } from '@/services/getArticleLikeByUser';
+import { likeArticle, removeLike, getArticleLikes, getArticleLikeByUser } from '@/services/likesService';
 
 export function useLikes() {
     const [likes, setLikes] = useState(0);

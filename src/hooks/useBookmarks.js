@@ -1,7 +1,4 @@
-import { saveBookmark } from "@/services/saveBookmark";
-import { removeBookmark } from "@/services/removeBookmark";
-import { getBookmarkByArticleId } from "@/services/getBookmarkByArticleId";
-import { getBookmarksByUser } from "@/services/getBookmarksByUser";
+import { saveBookmark, removeBookmark, getBookmarkByArticleId, getBookmarksByUser } from "@/services/bookmarksService";
 import { useArticleStore } from "@/stores/articleStore";
 import { useCallback } from "react";
 

@@ -1,9 +1,9 @@
 import { useState, useTransition } from "react";
 import { signUp } from "@/services/authService";
-import { createProfile } from "@/services/createProfile";
+import { createProfile } from "@/services/profileService";
 import { useNavigate } from "react-router";
 import { useUserStore } from "@/stores/userStore";
-import { createRole } from "@/services/createRole";
+import { createRole } from "@/services/rolesService";
 
 export function useSignUp() {
     const [error, setError] = useState(null);

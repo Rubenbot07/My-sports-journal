@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useUserStore } from "@/stores/userStore";
-import { logInWithPassword } from "@/services/logInWithPassword"; // ajusta la ruta si hace falta
+import { logInWithPassword } from "@/services/authService"; // ajusta la ruta si hace falta
 
 export function useLogin() {
   const setUser = useUserStore((s) => s.setUser);

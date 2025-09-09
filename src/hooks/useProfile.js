@@ -1,4 +1,4 @@
-import { getProfile } from "@/services/getProfile";
+import { getProfile } from "@/services/profileService";
 import { useState, useEffect } from "react";
 
 export function useProfile(email) {

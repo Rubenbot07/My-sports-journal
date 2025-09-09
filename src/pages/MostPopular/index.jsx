@@ -1,5 +1,5 @@
 import { ArticlesGalleryLayout } from '../../components/ArticlesGalleryLayout';
-import { getMostBookmarkedArticles } from '@/services/getMostPopularArticles';
+import { getMostBookmarkedArticles } from '@/services/articlesService';
 import { useEffect, useState } from 'react';
 export const MostPopular = () => {
     const [mostPopular, setMostPopular] = useState([]);

@@ -5,11 +5,11 @@ import { ChevronSVG } from "../assets/icons/ChevronSVG"
 import { LogOutSVG } from "../assets/icons/LogOutSVG"
 import { LogInSVG } from "../assets/icons/LogInSVG"
 import { useUserStore } from "@/stores/userStore"
-import { useLogout } from "@/hooks/useLogout" 
+import { useAuthSession } from "@/hooks/useAuthSession"
 
 
 export const Nav = () => {
-    const { logout } = useLogout()
+    const { logout } = useAuthSession()
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const categoriesRef = useRef(null)

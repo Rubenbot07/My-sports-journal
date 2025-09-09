@@ -1,4 +1,4 @@
-import { getArticleById } from "@/services/getArticleById";
+import { getArticleById } from "@/services/articlesService";
 import { useEffect, useState } from "react";
 import { useArticleStore } from "@/stores/articleStore";
 
