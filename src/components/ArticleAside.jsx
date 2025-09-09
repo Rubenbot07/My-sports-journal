@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCategoriesById } from '@/services/categoriesService';
+import { useCategories } from '@/hooks/useCategories';
 
 export const ArticleAside = ({ categoryId, articleId }) => {
     const [articles, setArticles] = useState([]);
     const [category , setCategory] = useState('');
+    const { loading, error, fetchCategoriesById } = useCategories();
     useEffect(() => {
         if (!categoryId || category === categoryId) return;
         const fetchArticles = async () => {
             setCategory(categoryId);
             try {
-                const data = await getCategoriesById(categoryId);
+                const data = await fetchCategoriesById(categoryId);
                 if (data && data.length > 0) {
                     setArticles(data[0].articles.filter(article => article.id !== articleId));
                 }
@@ -19,7 +21,10 @@ export const ArticleAside = ({ categoryId, articleId }) => {
             }
         };
         fetchArticles();
-    }, [categoryId, articleId, category]);
+    }, [categoryId, articleId, category, fetchCategoriesById]);
+
+    if (loading) return <h1>Loading...</h1>;
+    if (error) return <h1>Error loading articles: {error.message}</h1>;
 
 
     return (
