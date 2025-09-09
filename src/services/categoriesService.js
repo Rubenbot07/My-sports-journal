@@ -9,3 +9,13 @@ export async function getCategoriesById(id) {
   if (error) throw error;
   return data;
 }
+
+export async function getCategoryBySlug(slug) {
+  const { data, error } = await supabase
+    .from("categories")
+    .select(`*, articles(*, media(*))`)
+    .eq('slug', slug)
+
+  if (error) throw error;
+  return data;
+}

@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom"
 import { ArticleOfCategories } from "@/components/ArticleOfCategories"
-import { getCategoryBySlug } from "@/services/getCategoryBySlug";
+import { getCategoryBySlug } from "@/services/categoriesService";
 import { useEffect, useState } from "react";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 export const Category = () => {

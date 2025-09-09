@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getCategoriesById } from '@/services/getCategoriesById';
+import { getCategoriesById } from '@/services/categoriesService';
 
 export const ArticleAside = ({ categoryId, articleId }) => {
     const [articles, setArticles] = useState([]);
