@@ -1,5 +1,5 @@
 import { getCategoriesById, getCategoryBySlug, getAllCategories } from "@/services/categoriesService";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 export const useCategories = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -32,7 +32,7 @@ export const useCategories = () => {
         }
     };
 
-    const fetchCategoryBySlug = async (slug) => {
+    const fetchCategoriesBySlug = useCallback(async (slug) => {
         setLoading(true);
         setError(null);
         try {
@@ -43,7 +43,7 @@ export const useCategories = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
-    return { categories, loading, error, fetchCategoriesById, fetchCategoryBySlug, fetchAllCategories };
+    return { categories, loading, error, fetchCategoriesById, fetchCategoriesBySlug, fetchAllCategories };
 }

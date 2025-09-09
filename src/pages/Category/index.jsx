@@ -1,32 +1,31 @@
 import { useParams, Link } from "react-router-dom"
 import { ArticleOfCategories } from "@/components/ArticleOfCategories"
-import { getCategoryBySlug } from "@/services/categoriesService";
+import { useCategories } from "@/hooks/useCategories";
 import { useEffect, useState } from "react";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 export const Category = () => {
     const { category } = useParams();
-    const [loading, setLoading] = useState(true);
+    const { loading, error, fetchCategoriesBySlug } = useCategories();
     const [articles, setArticles] = useState([]);
     const [categoryTitle, setCategoryTitle] = useState('');
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getCategoryBySlug(category);
+                const data = await fetchCategoriesBySlug(category);
                 if (data && data.length > 0) {
                     setArticles(data[0].articles);
                     setCategoryTitle(data[0].name);
                 }
             } catch (error) {
                 console.error("Error fetching category:", error);
-            } finally {
-                setLoading(false);
-            }
+            } 
         };
         fetchData();
-    }, [category]);
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    }, [category, fetchCategoriesBySlug]);
+
+    if (loading) return <h1>Loading...</h1>;
+    if (error) return <h1>Error loading category: {error.message}</h1>;
+     
     return (
         <section className='grid grid-cols-1 2sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 p-4 w-full max-w-[1500px] mx-auto'>
             <h1

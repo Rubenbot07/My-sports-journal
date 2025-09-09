@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getCategoriesById } from '@/services/categoriesService';
 import { useCategories } from '@/hooks/useCategories';
 
 export const ArticleAside = ({ categoryId, articleId }) => {
