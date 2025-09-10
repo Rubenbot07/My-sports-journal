@@ -32,3 +32,20 @@ export async function createProfile({ username, email, authId }) {
     }
 
 }     
+
+export async function updateProfile({ user_id, display_name, bio }) {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ display_name, bio })
+      .eq("id", user_id)   // 👈 filtro por la PK o user_id
+      .select()
+      .single();           // 👈 asegura que devuelve 1 fila
+
+    if (error) throw error;
+    return data;
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    throw error;
+  }
+}

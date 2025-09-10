@@ -1,12 +1,15 @@
 import { useUserStore } from '@/stores/userStore'
 import { useProfile } from '@/hooks/useProfile'
 import { useParams } from 'react-router'
+import { useState } from 'react'
+import { Modal } from '@/components/Modal'
+import { EditProfileForm } from '@/components/EditProfileForm'
 
 export const Profile = () => {
     const { user, roles } = useUserStore()
     const { userEmail } = useParams();
     const { profile, loading } = useProfile(userEmail)
-
+    const [isOpen, setIsOpen] = useState(false);
     if (loading) return <h1>Loading...</h1>;
 
     return (
@@ -46,6 +49,16 @@ export const Profile = () => {
                         }
                     </>
             </section>
+            <div>
+            <button className='bg-primary text-white py-2 px-4 rounded-lg' onClick={() => setIsOpen(true)}>Edit Profile</button>
+
+            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                <div className='flex flex-col gap-4'>
+                    <h2 className='text-2xl font-semibold text-center'>Edit your profile</h2>
+                    <EditProfileForm onClose={setIsOpen} userId={profile?.id} userName={profile?.display_name} userBio={profile?.bio}/>
+                </div>
+            </Modal>
+            </div>
         </section>
     )
 }
