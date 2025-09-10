@@ -25,5 +25,6 @@ export const useArticleId = (id) => {
     fetch();
   }, [id, setArticle]);
 
+
   return { loading, error };
 }

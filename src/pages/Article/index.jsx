@@ -32,7 +32,7 @@ export const Article = () => {
             </h3>
             <i className='flex gap-2 text-lg text-start text-gray-500'>
                 By
-                <Link to={`/authors/${article?.profiles.display_name}`} className='underline font-bold'>
+                <Link to={`/authors/${article?.profiles.id}|${article?.profiles.display_name}`} className='underline font-bold'>
                     {article?.profiles.display_name}
                 </Link>
                 Sport Journal

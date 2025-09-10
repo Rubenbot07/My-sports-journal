@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useAuth } from "../context/UserContext";
 import { useState } from "react";
 export const EditArticleForm = () => {
-    const auth = useAuth()
     const { articleId } = useParams();
     const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
     const [title, setTitle] = useState(currentArticle.title)

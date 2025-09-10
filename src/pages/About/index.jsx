@@ -7,7 +7,7 @@ export const About = () => {
                     Welcome to Sports Journal, your dedicated partner in embracing and celebrating your journey through sports and fitness. This journal isn’t just a tool—it’s your space to set intentions, track progress, reflect on achievements, and discover the motivation that keeps you moving forward.
                 </i>
                 <div className="w-full md:w-2/4">
-                    <img className="h-full object-cover" src="https://i.postimg.cc/zGZmNhZG/journalis-Team.webp" alt='Group of Sports Journal founders' />
+                    <img fetchPriority="high" className="h-full object-cover" src="https://i.postimg.cc/zGZmNhZG/journalis-Team.webp" alt='Group of Sports Journal founders' />
                 </div>
             </section>
             <section className="grid grid-cols-1 md:grid-cols-4 text-white bg-black md:bg-white">

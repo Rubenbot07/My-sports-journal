@@ -15,7 +15,7 @@ export async function getArticleById(id) {
   try {
     const { data, error } = await supabase
       .from("articles")
-      .select(`*, media(*), categories(*), profiles!articles_author_id_fkey (display_name)`)
+      .select(`*, media(*), categories(*), profiles!articles_author_id_fkey (display_name, id)`)
       .eq('id', id)
       .eq('status', 'published')
       .single();
@@ -34,3 +34,13 @@ export const getMostBookmarkedArticles = async (limit = 10) => {
   if (error) throw error;
   return data;
 };
+
+export const getArticlesByAuthor = async (authorId) => {
+  const { data, error } = await supabase
+    .from("articles")
+    .select(`*, media(*), categories(*)`)
+    .eq('author_id', authorId);
+
+  if (error) throw error;
+  return data;
+}

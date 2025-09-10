@@ -1,17 +1,16 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/UserContext";
 import { useUserStore } from "@/stores/userStore";
 
 export const PrivateRoute = ({ children, roles }) => {
     const location = useLocation()
-    const auth = useAuth()
     const user = useUserStore((state) => state.user);
+    const userRoles = useUserStore((state) => state.roles);
 
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} />
     }
 
-    if (roles && !roles.includes(auth.role)) {
+    if (roles && !roles.includes(userRoles)) {
         return <Navigate to='/' />
     }
 
