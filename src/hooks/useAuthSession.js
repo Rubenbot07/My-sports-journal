@@ -84,5 +84,6 @@ export function useAuthSession() {
     }
   } 
 
+
   return { getProfileAndRoles, logout };
 }

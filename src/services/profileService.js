@@ -49,3 +49,20 @@ export async function updateProfile({ user_id, display_name, bio }) {
     throw error;
   }
 }
+
+export async function updateProfileImage({user_id, image}) {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: image })
+      .eq("id", user_id)   // 👈 filtro por la PK o user_id
+      .select()
+      .single();           // 👈 asegura que devuelve 1 fila
+
+    if (error) throw error;
+    return { data, error };
+  } catch (error) {
+    console.error("Error updating profile image:", error);
+    throw error;
+  } 
+}

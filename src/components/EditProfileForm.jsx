@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { useEditProfile } from "@/hooks/useEditProfile";
 
+
 export const EditProfileForm = ({ onClose, userId, userName, userBio }) => {
     const [displayName, setDisplayName] = useState(userName);
     const [bio, setBio] = useState(userBio);
     const { editProfile, loading, error } = useEditProfile();
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        editProfile({ user_id: userId, display_name: displayName, bio });
-        if(error) {
-            console.log(error)
+
+        try {
+        // espera que la actualización termine
+        await editProfile({ user_id: userId, display_name: displayName, bio });
+        // si éxito: cerrar modal
+        onClose(false);
+        } catch (err) {
+        // el hook ya setea `error`; aquí puedes mostrar toast o dejar que
+        // la UI muestre el error debajo del boton
+        console.error("Failed to edit profile:", err);
         }
-        if(!loading) {
-            onClose(false);
-        }
-    }
+    };
     return (
         <form  className="flex flex-col gap-2" action="">
             <label htmlFor="username">Username</label>
