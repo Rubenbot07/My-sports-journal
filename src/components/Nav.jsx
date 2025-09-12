@@ -31,12 +31,12 @@ export const Nav = () => {
     }, [])
 
     const handleLogout = async () => {
-        const { error } = await logout();
-        if (error) {
-            console.error(error);
-            return
+        try {
+            await logout()
+            navigate('/login')
+        } catch (err) {
+            console.error(err)
         }
-        navigate("/");
     }
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
