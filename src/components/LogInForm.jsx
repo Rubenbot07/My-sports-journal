@@ -53,7 +53,7 @@ return (
                 id="password"
                 onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <span className="self-start">Forgot your password?</span>
+        <Link to="/forgot-password" className="self-start">Forgot your password?</Link>
         {error && 
             <p className="text-red-500 bg-red-200 rounded-xl p-2">{error.message}</p>
         }

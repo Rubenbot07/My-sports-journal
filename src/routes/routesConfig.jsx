@@ -10,6 +10,8 @@ import {Article} from "@/pages/Article";
 import {Author} from "@/pages/Author";
 import {EditArticleForm} from "@/components/EditArticleForm";
 import {Category} from "@/pages/Category";
+import { ForgotPassword } from "@/pages/ForgotPassword";
+import { UpdatePassword } from "@/pages/UpdatePassword";
 import {PrivateRoute} from "@/components/PrivateRoute";
 import {PublicRoute} from "@/components/PublicRoute";
 
@@ -42,6 +44,9 @@ export const routesConfig = [
   { path: "/authors/:authorId", element: <Author /> },
 
   { path: "/category/:category", element: <Category /> },
+
+  { path: "/forgot-password", element: <ForgotPassword /> },
+  { path: "/update-password", element: <UpdatePassword /> },
 
   { path: "*", element: <h1>404</h1> },
 ];

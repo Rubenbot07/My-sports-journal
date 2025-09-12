@@ -34,3 +34,11 @@ export async function signUp({ email, password }) {
 
     return { data, error }
 }
+
+export async function resetPassword(email) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/update-password`,
+    });
+
+    return { error };
+}
