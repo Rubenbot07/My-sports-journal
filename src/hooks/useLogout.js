@@ -1,5 +1,5 @@
-import { logOut } from "@/services/logOut";
-import { useNavigate } from "react-router";
+import { signOut as logOut } from "@/services/authService";
+import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { useUserStore } from "@/stores/userStore";
 

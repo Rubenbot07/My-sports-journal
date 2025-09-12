@@ -1,4 +1,4 @@
-import {  BrowserRouter } from 'react-router'
+import {  BrowserRouter } from 'react-router-dom'
 import { useAuthSession } from './hooks/useAuthSession'
 import { AppRoutes } from '@/routes/AppRoutes'
 import { Layout } from '@/components/Layout'
@@ -10,7 +10,7 @@ function App() {
         <Layout>
           <AppRoutes />
         </Layout>
-      </BrowserRouter>
+    </BrowserRouter>
   )
 }
 

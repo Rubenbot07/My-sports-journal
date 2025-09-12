@@ -6,6 +6,7 @@ import { LogOutSVG } from "../assets/icons/LogOutSVG"
 import { LogInSVG } from "../assets/icons/LogInSVG"
 import { useUserStore } from "@/stores/userStore"
 import { useAuthSession } from "@/hooks/useAuthSession"
+import { useNavigate } from "react-router-dom"
 
 
 export const Nav = () => {
@@ -15,6 +16,7 @@ export const Nav = () => {
     const categoriesRef = useRef(null)
     const authUser = useUserStore((state) => state.authUser);
     const profileUser = useUserStore((state) => state.user);
+    const navigate = useNavigate();
     const handleClickOutside = (event) => {
         if (categoriesRef.current && !categoriesRef.current.contains(event.target)) {
             setIsCategoriesOpen(false)
@@ -28,6 +30,14 @@ export const Nav = () => {
         }
     }, [])
 
+    const handleLogout = async () => {
+        const { error } = await logout();
+        if (error) {
+            console.error(error);
+            return
+        }
+        navigate("/");
+    }
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
@@ -72,7 +82,7 @@ export const Nav = () => {
                                 <li>
                                     <button
                                         aria-label="Log out"
-                                        className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={logout}>
+                                        className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={handleLogout}>
                                         <LogOutSVG />
                                     </button>
                                 </li>                        

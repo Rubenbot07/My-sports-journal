@@ -13,17 +13,27 @@ export const UploadPhotoForm = ({ userId }) => {
 
     return (
         <section className="flex flex-col justify-center items-center w-full h-full gap-4">
-            <ImageUp size={120} color="gray"/>
-            <input 
-                onChange={handleFileChange}
-                type="file"
-                accept="image/*"
-                id="fileInput"
-                className="hidden"/>
-                <label className="bg-primary text-white px-4 py-2 rounded-full" htmlFor="fileInput">Upload Image</label>
+            
+            {!url && (
+                <>
+                    <ImageUp size={120} color="gray"/>
+                    <input 
+                        onChange={handleFileChange}
+                        type="file"
+                        accept="image/*"
+                        id="fileInput"
+                        className="hidden"/>
+                        <label className="bg-primary text-white px-4 py-2 rounded-full" htmlFor="fileInput">Upload Image</label>
+                </>
+            )}
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
-            {url && <img src={url.publicUrl} alt="Uploaded" />}
+            {url && 
+                <>
+                    <p>Image uploaded successfully</p>
+                    <img src={url.publicUrl} alt="Uploaded" />
+                </>
+            }
         </section>
     )
 }

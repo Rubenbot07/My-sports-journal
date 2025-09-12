@@ -80,7 +80,7 @@ export function useAuthSession() {
     try {
       await supabase.auth.signOut();
     } catch (err) {
-      console.error("useAuthSession logout error:", err);
+      return { error: err };
     }
   } 
 
