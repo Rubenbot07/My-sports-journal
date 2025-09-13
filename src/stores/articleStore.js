@@ -7,4 +7,8 @@ export const useArticleStore = create((set) => ({
     setArticles: (articles) => set({ articles }),
     isSaved: false,
     setIsSaved: (isSaved) => set({ isSaved }),
+    removeArticle: (id) =>
+    set((state) => ({
+      articles: state.articles.filter((a) => a.id !== id),
+    })),
 }));

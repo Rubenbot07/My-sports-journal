@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Comment } from '@/components/Comment';
+import { ArticleHandler } from '@/components/ArticleHandler';
 import { CommentContainer } from '@/components/CommentContainer';
 import { ArticleAside } from '@/components/ArticleAside';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
@@ -14,7 +14,7 @@ export const Article = () => {
     const roles = useUserStore((state) => state.roles).map(r => r.name);
     const { articleId } = useParams();
     const { loading, error } = useArticleId(articleId);
-    const { article } = useArticleStore();
+    const { article, removeArticle } = useArticleStore();
 
     if (loading) return <h1>Loading...</h1>;
     if (error) return <h1>Error loading article: {error.message}</h1>;
@@ -64,34 +64,8 @@ export const Article = () => {
                     </div>           
                 </div>
                 <CommentContainer articleId={article?.id} />
-                <div className='flex flex-col 2sm:col-span-3 p-4 gap-4 w-full  2sm:flex-row justify-center md:justify-start items-start'>
-                    {
-                        roles?.includes('admin') && (
-                            <>
-                                <button
-                                    // onClick={() => auth.deleteArticle(currentArticle?.id)}
-                                    className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56'
-                                >
-                                    Delete
-                                </button>
-                                <button className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56'>
-                                    <Link to={`/articles/edit/${article?.id}`}>
-                                        Edit
-                                    </Link>
-                                </button>
-                            </>
-                        )
-                    }
-                    {
-                        roles?.includes('editor') || roles === 'editor' && (
-                            <>
-                                <button className='bg-primary cursor-pointer text-white p-2 rounded-lg'>
-                                    Edit
-                                </button>
-                            </>
-                        )
-                    }
-                </div>
+                <ArticleHandler articleId={article?.id} roles={roles} userId={user?.id} setRemoveArticle={removeArticle} />
+                
             </section>
         </section>
     )

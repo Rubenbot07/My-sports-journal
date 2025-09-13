@@ -23,9 +23,9 @@ export const getBookmarksByUser = async (userId) => {
     try {
         const { data, error } = await supabase
             .from('bookmarks')
-            .select(`articles(*, media(*))`)
-            .eq('user_id', userId);
-
+            .select(`articles!inner(*, media(*))`)
+            .eq('user_id', userId)
+            .is("articles.deleted_at", null);
         if (error) {
             throw error;
         }

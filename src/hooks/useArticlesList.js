@@ -8,7 +8,7 @@ export const useArticlesList = (limit) => {
 
 
   useEffect(() => {
-    if(articles.length > 0) return;
+    if(articles.length > 11) return;
     setLoading(true);
     const fetch = async () => {
       try {
