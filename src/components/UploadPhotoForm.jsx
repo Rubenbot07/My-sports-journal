@@ -1,13 +1,13 @@
 import { ImageUp } from "lucide-react"
 import { useUploadImage } from "@/hooks/useUploadPhoto";
 
-export const UploadPhotoForm = ({ userId }) => {
+export const UploadPhotoForm = ({ userId, oldPath }) => {
     const { uploadImage, url, loading, error } = useUploadImage('profile-images');
 
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
-        await uploadImage(file, userId);
+        await uploadImage(file, userId, oldPath);
     }
 }
 

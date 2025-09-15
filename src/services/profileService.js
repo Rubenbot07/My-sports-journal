@@ -66,3 +66,19 @@ export async function updateProfileImage({user_id, image}) {
     throw error;
   } 
 }
+
+export async function updateImageInternalPath({user_id, internalPath}) {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ avatar_path: internalPath })
+      .eq("id", user_id)   // 👈 filtro por la PK o user_id
+      .select()
+      .single(); 
+    if (error) throw error;
+    return { data, error };
+  } catch (error) {
+    console.error("Error updating profile image:", error);
+    throw error;
+  } 
+}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import imageCompression from "browser-image-compression";
 import { getImgPublicUrl } from "@/services/photoService";
-import { uploadPhoto } from "@/services/photoService";
-import { updateProfileImage } from "@/services/profileService";
+import { uploadPhoto, removePhoto } from "@/services/photoService";
+import { updateProfileImage, updateImageInternalPath } from "@/services/profileService";
 import { useUserStore } from "@/stores/userStore";
 
 export function useUploadImage(bucketName = "profile-images") {
@@ -10,7 +10,7 @@ export function useUploadImage(bucketName = "profile-images") {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const setUser = useUserStore((s) => s.setUser);
-  const uploadImage = async (file, userId) => {
+  const uploadImage = async (file, userId, oldPath) => {
     try {
       setLoading(true);
       setError(null);
@@ -54,8 +54,13 @@ export function useUploadImage(bucketName = "profile-images") {
         if(!updateData) return;
         setUser(updateData);
       }
-
       if (getError) throw getError;
+      
+      const {error: updatePathError} = await updateImageInternalPath({user_id: userId, internalPath: fileName});
+      if (updatePathError) throw updatePathError;
+
+      await removePhoto(bucketName, oldPath);
+
     } catch (err) {
       setError(err.message);
       console.error(err);
