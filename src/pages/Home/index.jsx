@@ -10,7 +10,6 @@ export const Home = () => {
     if (loading) {
         return <div>Loading...</div>;
     }
-    console.log(articles)
     return (
         <div className='flex flex-col gap-10 w-full '>
             <section className='grid grid-cols-1 lg:grid-cols-4 w-full lg:max-w-[1500px] py-4 gap-y-8 lg:gap-x-8  min-[300px] h-auto mx-auto'>
