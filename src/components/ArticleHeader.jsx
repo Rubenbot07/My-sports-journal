@@ -13,7 +13,7 @@ export const ArticleHeader = ({ article }) => {
                 </Link>
                 Sports Journal
             </i>
-            <ArticleHeroBanner articleTitle={article?.title} />
+            <ArticleHeroBanner title={article?.title} />
         </header>
     );
 }

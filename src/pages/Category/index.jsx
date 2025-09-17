@@ -3,6 +3,8 @@ import { ArticleOfCategories } from "@/components/ArticleOfCategories"
 import { useCategories } from "@/hooks/useCategories";
 import { useEffect, useState } from "react";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { ArticleHeroBanner } from "@/components/ArticleHeroBanner";
+import { ThumbnailContainer } from "@/components/thumbnailContainer";
 export const Category = () => {
     const { category } = useParams();
     const { loading, error, fetchCategoriesBySlug } = useCategories();
@@ -28,10 +30,7 @@ export const Category = () => {
      
     return (
         <section className='grid grid-cols-1 2sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 p-4 w-full max-w-[1500px] mx-auto'>
-            <h1
-                className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
-                {categoryTitle}
-            </h1>
+            <ArticleHeroBanner title={categoryTitle} />
             <Link to={`/articles/${articles[0]?.id}`} className="col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2">
                 <article className="flex flex-col md:flex-row  bg-gray-200 p-4 rounded-lg shadow-md text-start gap-4 hover:bg-gray-300">
                     <picture className="rounded-lg overflow-hidden md:w-2/3 lg:w-1/2 max-h-96">

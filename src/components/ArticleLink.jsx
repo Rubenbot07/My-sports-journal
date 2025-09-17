@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ThumbnailContainer } from './thumbnailContainer'
 export const ArticleLink = ({ article, isThird }) => {
     return (
         <article className={`relative border border-gray-300 w-full h-full flex flex-col bg-gray-200 rounded-lg shadow-md  text-start hover:bg-gray-300 ${isThird ? 'pb-0 lg:row-span-2 lg:col-span-2 row-start-1 lg:col-start-2 lg:row-start-1 2sm:col-span-2' : 'pb-4'}`}>
