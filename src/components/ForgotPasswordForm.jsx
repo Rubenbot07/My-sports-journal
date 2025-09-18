@@ -4,7 +4,7 @@ import { usePassword } from "@/hooks/usePassword"
 import { Mail } from "lucide-react"
 export const ForgotPasswordForm = () => {
     const [email, setEmail] = useState('')
-    const { handleResetPassword, loading, error, success } = usePassword(email)
+    const { handleResetPassword, loading, error, success } = usePassword()
 
     const handleForgotPassword = async (e) => {
         e.preventDefault()
@@ -15,11 +15,11 @@ export const ForgotPasswordForm = () => {
         <section>
             {success ? (
                 <div role="alert" aria-live="polite" className="border-primary z-10 relative md:translate-y-1/5 flex flex-col items-center justify-center gap-4 w-full min-w-80  md:w-lg bg-white border-1 md:border-gray-300 shadow-lg p-8 rounded-xl h-64">
-                <h2 className="text-2xl font-semibold">Check your email</h2>
-                <Mail className="w-16 h-16 text-primary" />
-                <p className="text-md text-gray-600">
-                    If your account exists, we’ve sent password reset instructions to your email.
-                </p>
+                    <h2 className="text-2xl font-semibold">Check your email</h2>
+                    <Mail className="w-16 h-16 text-primary" />
+                    <p className="text-md text-gray-600">
+                        If your account exists, we’ve sent password reset instructions to your email.
+                    </p>
                 </div>
             ) : (            
             <form

@@ -42,3 +42,8 @@ export async function resetPassword(email) {
 
     return { error };
 }
+
+export async function updatePassword(password) {
+    const { error } = await supabase.auth.updateUser({ password });
+    return { error };
+}

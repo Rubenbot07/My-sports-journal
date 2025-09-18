@@ -1,5 +1,9 @@
+import { AuthLayout } from "@/components/AuthLayout";
+import { UpdatePasswordForm } from "@/components/UpdatePasswordForm";
 export const UpdatePassword = () => {
     return (
-        <div>Updatepassword</div>
+        <AuthLayout>
+            <UpdatePasswordForm />
+        </AuthLayout>
     )
 };
