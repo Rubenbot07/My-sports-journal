@@ -4,7 +4,7 @@ export const ArticleLink = ({ article, isThird }) => {
     return (
         <article className={`relative border border-gray-300 w-full h-full flex flex-col bg-gray-200 rounded-lg shadow-md  text-start hover:bg-gray-300 ${isThird ? 'pb-0 lg:row-span-2 lg:col-span-2 row-start-1 lg:col-start-2 lg:row-start-1 2sm:col-span-2' : 'pb-4'}`}>
             <Link to={`/articles/${article.id}`}>
-                <div className={`overflow-hidden rounded-t-lg h-[200px] relative ${isThird ? 'lg:h-[400px]' : ''} transition-all duration-500`}>
+                <div className={`overflow-hidden rounded-t-lg h-[200px] relative ${isThird ?  'md:h-[400px]' : ''} transition-all duration-500`}>
                     <picture>
                         {/* <source media="(min-width: 1024px)" srcSet={`${article?.media.find((img) => img.role === 'banner')?.url}`} /> */}
                         <source media="(min-width: 640px)" srcSet={`${article?.media.find((img) => img.role === 'cover')?.url}`} />

@@ -1,6 +1,7 @@
 import { useArticlesManage } from "@/hooks/useArticlesManage";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { EditButton } from "@/components/EditButton";
 export const ArticleHandler = ({ articleId, roles, userId, setRemoveArticle }) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -35,11 +36,7 @@ export const ArticleHandler = ({ articleId, roles, userId, setRemoveArticle }) =
                         >
                             {loading ? 'Deleting...' : 'Delete'}
                         </button>
-                        <button className='bg-primary cursor-pointer text-white p-2 rounded-lg min-w-32 max-w-56'>
-                            <Link to={`/articles/edit/${articleId}`}>
-                                Edit
-                            </Link>
-                        </button>
+                        <EditButton />
                     </>
                 )
             }

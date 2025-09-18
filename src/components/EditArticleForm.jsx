@@ -1,25 +1,35 @@
-import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { useArticleStore } from "@/stores/articleStore";
+import { useArticlesManage } from "@/hooks/useArticlesManage";
+import { useNavigate } from "react-router-dom";
 export const EditArticleForm = () => {
-    const { articleId } = useParams();
-    const currentArticle = auth.articles?.find(article => article.id === parseInt(articleId));
-    const [title, setTitle] = useState(currentArticle.title)
-    const [content, setContent] = useState(currentArticle.content)
-    const [author, setAuthor] = useState(currentArticle.author)
-    const [date, setDate] = useState(currentArticle.publishedDate)
-    const [category, setCategory] = useState(currentArticle.category)
+    const article = useArticleStore((state) => state.article);
+    const { updateArticleHandler } = useArticlesManage();
+    const [title, setTitle] = useState(article.title)
+    const [content, setContent] = useState(article.content_markdown)
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            setLoading(true)
+            await updateArticleHandler(article.id, {title: title, content_markdown: content, status: 'in_review'})
+            navigate('/')
+        } catch (err) {
+            setError(err)
+        } finally {
+            setLoading(false)
+        }
+    }
     return (
-        <section className='text-center w-5/6 mx-auto flex flex-col gap-8'>
-            <h1
-                className={`relative font-bold text-4xl text-white col-span-1 2sm:col-span-2 md:col-span-1 lg:col-span-2 h-20 flex items-center justify-center bg-[url("https://t3.ftcdn.net/jpg/02/71/29/58/360_F_271295864_yiioni2LZXAkdVUs1EP6GdR680QR7iKv.jpg")] bg-cover bg-center`}>
-                    Edit Article
-            </h1>
+        <section className='text-center w-full mx-auto flex flex-col gap-8 h-10/12 overflow-y-scroll'>
             <form
                 onSubmit={(e) => {
-                    e.preventDefault()
-                    auth.editArticle(articleId, title, author, date, content, category)
+                    handleSubmit(e)
                 }} 
-                className="flex flex-col gap-4 w-4/6 min-w-72 mx-auto p-4 "
+                className="flex flex-col gap-4 w-full min-w-7/8 mx-auto p-4 "
             >
                 <label htmlFor="title" className="bg-primary text-white rounded-md">Edit Title</label>
                 <input 
@@ -37,41 +47,13 @@ export const EditArticleForm = () => {
                     className="border border-primary rounded-md p-2 text-center bg-white h-48"
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <label htmlFor="author" className="bg-primary text-white rounded-md">Edit Author</label>
-                <input 
-                    type="text"
-                    id="author"
-                    value={author}
-                    className="border border-primary rounded-md p-2 text-center bg-white"
-                    onChange={(e) => setAuthor(e.target.value)}
-                />
-                <label htmlFor="date" className="bg-primary text-white rounded-md">Edit Date</label>
-                <input 
-                    type="text"
-                    id="date"
-                    value={date}
-                    className="border border-primary rounded-md p-2 text-center bg-white" 
-                    onChange={(e) => setDate(e.target.value)}
-                />
-                <select
-                    className="border border-primary rounded-md p-2 text-center bg-white"  
-                    name="category"
-                    id="category"
-                    onChange={(e) => e.target.value && setCategory(e.target.value)}
-                >
-                    <option value="">Select Category</option>
-                    <option value="Football">Football</option>
-                    <option value="Basketball">Basketball</option>
-                    <option value="Tennis">Tennis</option>
-                    <option value="Soccer">Soccer</option>
-                    <option value="Esports">Esports</option>
-                </select>
                 <button 
                     className="bg-primary text-white p-2 rounded-lg"
                     type="submit"
                 >
-                    Submit
+                    {loading ? 'Updating...' : 'Update'}
                 </button>
+                {error && <p className="text-red-500">{error}</p>}
             </form>
         </section>
     )

@@ -55,3 +55,12 @@ export const deleteArticle = async (articleId, deletedBy) => {
 
   return { data, error }
 }
+
+export const updateArticle = async (articleId, data) => {
+  const { data: updatedData, error } = await supabase
+  .from("articles")
+  .update(data)
+  .eq('id', articleId)
+
+  return { data: updatedData, error }
+}
