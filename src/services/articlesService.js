@@ -41,6 +41,7 @@ export const getArticlesByAuthor = async (authorId) => {
     .from("articles")
     .select(`*, media(*), categories(*)`)
     .eq('author_id', authorId)
+    .eq('status', 'published')
     .is('deleted_at', null);
 
   if (error) throw error;

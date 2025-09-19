@@ -15,6 +15,7 @@ export async function getCategoriesById(id) {
     .from("categories")
     .select(`*, articles(*)`)
     .eq('id', id)
+    .eq("articles.status", "published");
 
   if (error) throw error;
   return data;
@@ -25,6 +26,7 @@ export async function getCategoryBySlug(slug) {
     .from("categories")
     .select(`*, articles(*, media(*))`)
     .eq('slug', slug)
+    .eq("articles.status", "published");
 
   if (error) throw error;
   return data;
