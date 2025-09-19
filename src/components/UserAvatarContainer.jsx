@@ -6,7 +6,7 @@ export const UserAvatarContainer = ({ currentUser, isOwner, isOpenPhoto, setIsOp
     return (
         <section>
             <div className='w-40 h-40 absolute -top-14 left-1/2 -translate-x-1/2 rounded-full border-4 border-primary bg-gray-300 overflow-hidden mx-auto'>
-                <img src={currentUser?.avatar_url ? currentUser?.avatar_url : '/src/assets/defaultAvatar.webp'} alt={currentUser?.display_name} className='w-full h-full object-cover object-center' />
+                <img src={currentUser?.avatar_url ? currentUser?.avatar_url : 'https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/defaultAvatar.webp'} alt={currentUser?.display_name} className='w-full h-full object-cover object-center' />
             </div>
             {isOwner && (            
                 <>

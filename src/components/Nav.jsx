@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
-import Logo from '../assets/sportsJournalLogo.png'
-import { ChevronSVG } from "../assets/icons/ChevronSVG"
-import { LogOutSVG } from "../assets/icons/LogOutSVG"
-import { LogInSVG } from "../assets/icons/LogInSVG"
+import { ChevronDown } from "lucide-react"
+import { LogOut } from "lucide-react"
+import { UserRoundPlus } from "lucide-react"
 import { useUserStore } from "@/stores/userStore"
 import { useAuthSession } from "@/hooks/useAuthSession"
 import { useNavigate } from "react-router-dom"
@@ -68,7 +67,7 @@ export const Nav = () => {
                         </button>
                     <div className="w-28 h-3.5 flex items-center">
                         <NavLink to="/">
-                            <img aria-label="Sports Journal" className="overflow-hidden" src={Logo} alt="Sports Journal Logo" />
+                            <img aria-label="Sports Journal" className="overflow-hidden" src='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/sportsJournalLogo.png' alt="Sports Journal Logo" />
                         </NavLink>
                     </div>
                 </li>
@@ -83,7 +82,7 @@ export const Nav = () => {
                                     <button
                                         aria-label="Log out"
                                         className="cursor-pointer p-1 hover:bg-red-800 rounded-2xl" onClick={handleLogout}>
-                                        <LogOutSVG />
+                                        <LogOut />
                                     </button>
                                 </li>                        
                             </ul>
@@ -91,7 +90,7 @@ export const Nav = () => {
                             <ul className="flex gap-2 font-semibold items-center">
                                 <li className="w-10 p-1">
                                     <NavLink to="/login" aria-label="Log in">
-                                        <LogInSVG />
+                                        <UserRoundPlus />
                                     </NavLink>
                                 </li>
                                 <li 
@@ -128,7 +127,7 @@ export const Nav = () => {
                     <button className="flex items-center cursor-pointer" onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}>
                         <span>Categories</span>
                         <span className={`transition-all duration-300 ${isCategoriesOpen ? 'rotate-180' : ''}`}>
-                            <ChevronSVG />
+                            <ChevronDown />
                         </span>
                     </button>
                         <ul className={`${isCategoriesOpen ? 'flex' : 'hidden' } flex-col  gap-4 md:absolute p-2 md:flex-row md:bg-gray-10000 md:top-10 md:shadow-md md:rounded-b-md md:gap-8 bg-white`}>

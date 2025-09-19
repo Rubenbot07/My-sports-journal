@@ -28,7 +28,7 @@ export const Comment = ({comment, loading, handleDeleteComment, handleUpdateComm
             <div className="flex flex-col gap-2 relative">
                 <Link to={`/profile/${comment.profiles.email}`} className="font-bold flex gap-2 items-center">
                     <div className='w-10 h-10 rounded-full bg-gray-300 overflow-hidden'>
-                        <img src={comment?.profiles?.avatar_url ? comment.profiles?.avatar_url : '/src/assets/defaultAvatar.webp'} alt={comment.profiles.display_name} className='w-full h-full object-cover object-center'/> 
+                        <img src={comment?.profiles?.avatar_url ? comment.profiles?.avatar_url : 'https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/defaultAvatar.webp'} alt={comment.profiles.display_name} className='w-full h-full object-cover object-center'/> 
                     </div>
                     <h4 className="font-bold">{comment.profiles.display_name}</h4>
                 </Link>

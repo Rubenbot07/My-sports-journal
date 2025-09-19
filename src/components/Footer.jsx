@@ -1,12 +1,11 @@
-import Logo from '../assets/sportsJournalLogo.png';
-
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 export const Footer = () => {
     return (
         <footer className="bg-black text-white p-6">
             <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                 {/* Logo Section */}
                 <div className="flex flex-col items-center md:items-start">
-                    <img src={Logo} alt="Logo" className="w-20 h-20 md:w-24 md:h-24" />
+                    <img src='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/sportsJournalLogo.png' alt="Logo" className="w-20 h-20 md:w-24 md:h-24" />
                     <p className="text-sm mt-2 text-gray-400 text-center md:text-left">
                         Your trusted source for sports news and updates.
                     </p>
@@ -23,16 +22,16 @@ export const Footer = () => {
                 {/* Social Media Links */}
                 <div className="flex gap-4">
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-500">
-                        <i className="fab fa-facebook-f text-xl"></i>
+                        <Facebook className="w-6 h-6" />
                     </a>
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-blue-400">
-                        <i className="fab fa-twitter text-xl"></i>
+                        <Twitter className="w-6 h-6" />
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500">
-                        <i className="fab fa-instagram text-xl"></i>
+                        <Instagram className="w-6 h-6" />
                     </a>
                     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-500">
-                        <i className="fab fa-youtube text-xl"></i>
+                        <Youtube className="w-6 h-6" />
                     </a>
                 </div>
             </div>

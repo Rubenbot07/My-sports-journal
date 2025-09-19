@@ -65,3 +65,12 @@ export const updateArticle = async (articleId, data) => {
 
   return { data: updatedData, error }
 }
+
+export const createArticle = async (data) => {
+  const { data: createdData, error } = await supabase
+  .from("articles")
+  .insert(data)
+  .select()
+
+  return { data: createdData, error }
+}
