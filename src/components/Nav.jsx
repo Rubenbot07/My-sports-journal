@@ -15,6 +15,8 @@ export const Nav = () => {
     const categoriesRef = useRef(null)
     const authUser = useUserStore((state) => state.authUser);
     const profileUser = useUserStore((state) => state.user);
+    const roles = useUserStore((state) => state.roles).map(r => r.name);
+
     const navigate = useNavigate();
     const handleClickOutside = (event) => {
         if (categoriesRef.current && !categoriesRef.current.contains(event.target)) {
@@ -101,7 +103,8 @@ export const Nav = () => {
                             </ul>
                         )
                     }
-                </li> 
+                </li>
+     
             </ul>
             <ul className={`z-50 gap-8 p-4 w-1/2 rounded-br-2xl absolute top-14 ${isMenuOpen ? 'flex transition-transform duration-300 ease-in translate-x-0' : 'flex transition-transform -translate-x-full duration-300 ease-in'} md:relative md:top-0 md:flex flex-col md:translate-x-0 md:flex-row md:items-center bg-white shadow-md font-semibold md:gap-4 md:w-full md:rounded-b-none`}>
                 <li className="hover:text-primary">
@@ -123,6 +126,16 @@ export const Nav = () => {
                 <li className="hover:text-primary">
                     <NavLink to="/favorites" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Favorites</NavLink>
                 </li>
+                {
+                    roles.includes('author') && (
+                        <li
+                            aria-label="Add article"
+                            className="hover:text-primary"
+                        >
+                            <NavLink to="/create-article">Create Article</NavLink>
+                        </li>
+                    )
+                }
                 <li ref={categoriesRef} className="relative">
                     <button className="flex items-center cursor-pointer" onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}>
                         <span>Categories</span>

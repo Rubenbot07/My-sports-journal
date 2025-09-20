@@ -1,5 +1,6 @@
 import { deleteArticle } from "@/services/articlesService";
 import { updateArticle } from "@/services/articlesService";
+import { createArticle } from "@/services/articlesService";
 
 export const useArticlesManage = () => {
 
@@ -13,5 +14,10 @@ export const useArticlesManage = () => {
         return { data, error };
     };
 
-    return { deleteArticleHandler, updateArticleHandler };
+    const createArticleHandler = async (data) => {
+        const { data: createdData, error } = await createArticle(data);
+        return { data: createdData, error }; 
+    }
+
+    return { deleteArticleHandler, updateArticleHandler, createArticleHandler };
 }

@@ -12,6 +12,7 @@ import {EditArticleForm} from "@/components/EditArticleForm";
 import {Category} from "@/pages/Category";
 import { ForgotPassword } from "@/pages/ForgotPassword";
 import { UpdatePassword } from "@/pages/UpdatePassword";
+import { CreateArticle } from "@/pages/CreateArticle";
 import {PrivateRoute} from "@/components/PrivateRoute";
 import {PublicRoute} from "@/components/PublicRoute";
 
@@ -21,17 +22,16 @@ export const routesConfig = [
   { path: "/most-popular", element: <MostPopular /> },
 
   { path: "/favorites", element: <PrivateRoute><Favorites /></PrivateRoute> },
-  { path: "/profile", element: <PrivateRoute><Profile /></PrivateRoute> },
+  { path: "/profile", element: <Navigate to="/" /> },
   { path: "/profile/:userEmail", element: <Profile /> },
 
   { path: "/login", element: <PublicRoute><Login /></PublicRoute> },
   { path: "/register", element: <PublicRoute><SignUp /></PublicRoute> },
-
   {
-    path: "/articles/edit/:articleId",
+    path: "/create-article",
     element: (
-      <PrivateRoute roles={["admin", "editor"]}>
-        <EditArticleForm />
+      <PrivateRoute roles={["author"]}>
+        <CreateArticle />
       </PrivateRoute>
     ),
   },

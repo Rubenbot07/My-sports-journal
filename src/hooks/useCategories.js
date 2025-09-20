@@ -5,7 +5,7 @@ export const useCategories = () => {
     const [error, setError] = useState(null);
     const [categories, setCategories] = useState([]);
 
-    const fetchAllCategories = async () => {
+    const fetchAllCategories = useCallback(async () => {
         setLoading(true);
         setError(null);
         try {
@@ -16,7 +16,7 @@ export const useCategories = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
 
     const fetchCategoriesById = async (categoryId) => {
