@@ -6,7 +6,7 @@ export const About = () => {
                 <i className="p-8 lg:bg-primary text-xl lg:text-2xl flex items-center lg:text-white text-center lg:p-10 w-full lg:w-2/4 ">
                     Welcome to Sports Journal, your dedicated partner in embracing and celebrating your journey through sports and fitness. This journal isn’t just a tool—it’s your space to set intentions, track progress, reflect on achievements, and discover the motivation that keeps you moving forward.
                 </i>
-                <div className="w-full lg:w-2/4">
+                <div style={{ aspectRatio: '16/9'}} className="w-full lg:w-2/4">
                     <picture>
                         <source media="(min-width: 1024px)" srcSet='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/aboutSectionBanner.webp' />
                         <source media="(min-width: 640px)" srcSet='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/aboutSectionCover.webp' />

@@ -69,24 +69,6 @@ return (
              Sign up
            </Link>
          </p>
-        {/* Divider with "OR" */}
-        <div className="flex items-center gap-4 my-4">
-            <hr className="flex-grow border-t border-gray-300" />
-            <span className="text-gray-500 font-medium">OR</span>
-            <hr className="flex-grow border-t border-gray-300" />
-        </div>
-
-        {/* Social login buttons */}
-        <div className="flex gap-4 mx-auto flex-col md:flex-row">
-            <button className="flex items-center justify-center gap-2 cursor-pointer border border-gray-400 rounded-xl p-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="Google" className="w-5 h-5" />
-                Continue with Google
-            </button>
-            <button className="flex items-center justify-center gap-2 cursor-pointer border border-gray-400 rounded-xl p-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" className="w-5 h-5" />
-                Continue with Facebook
-            </button>
-        </div>
     </form>
     );
 }
