@@ -5,7 +5,7 @@ export const ShareButton = ({ article }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const articleUrl = window.location.origin + "/article/" + article?.id;
+  const articleUrl = window.location.origin + "/articles/" + article?.id;
   const handleShare = async () => {
     if (navigator.share) {
       setLoading(true);
