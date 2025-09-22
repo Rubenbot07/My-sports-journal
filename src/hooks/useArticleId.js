@@ -2,7 +2,7 @@ import { getArticleById } from "@/services/articlesService";
 import { useEffect, useState } from "react";
 import { useArticleStore } from "@/stores/articleStore";
 
-export const useArticleId = (id) => {
+export const useArticleId = (id, status) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { setArticle } = useArticleStore();
@@ -13,7 +13,8 @@ export const useArticleId = (id) => {
     setLoading(true);
     const fetch = async () => {
       try {
-        const data = await getArticleById(id);
+        const data = await getArticleById(id, status);
+        console.log(data);
         setArticle(data);
       } catch (err) {
         console.error("Failed to fetch article:", err);
@@ -23,7 +24,7 @@ export const useArticleId = (id) => {
       }
     };
     fetch();
-  }, [id, setArticle]);
+  }, [id, setArticle, status]);
 
 
   return { loading, error };

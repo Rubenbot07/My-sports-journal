@@ -5,11 +5,11 @@ export const UploadPhotoForm = ({ userId, oldPath }) => {
     const { uploadImage, url, loading, error } = useUploadImage('profile-images');
 
     const handleFileChange = async (e) => {
-        const file = e.target.files[0];
-        if (file) {
-        await uploadImage(file, userId, oldPath);
+            const file = e.target.files[0];
+            if (file) {
+            await uploadImage(file, userId, oldPath);
+        }
     }
-}
 
     return (
         <section className="flex flex-col justify-center items-center w-full h-full gap-4">

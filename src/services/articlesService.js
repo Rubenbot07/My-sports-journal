@@ -12,15 +12,15 @@ export async function getArticles(limit = 20) {
   return data;
 }
 
-export async function getArticleById(id) {
+export async function getArticleById(id, status = "published") {
   try {
     const { data, error } = await supabase
       .from("articles")
       .select(`*, media(*), categories(*), profiles!articles_author_id_fkey (display_name, id)`)
       .eq('id', id)
-      .eq('status', 'published')
+      .eq('status', status)
       .is('deleted_at', null)
-      .single();
+      .maybeSingle();
     if (error) throw error;
     return data;
   } catch (err) {
@@ -28,6 +28,7 @@ export async function getArticleById(id) {
     throw new Error("Could not fetch article");
   }
 }
+
 
 export const getMostBookmarkedArticles = async (limit = 10) => {
   const { data, error } = await supabase
@@ -73,4 +74,20 @@ export const createArticle = async (data) => {
   .select()
 
   return { data: createdData, error }
+}
+
+export const uploadArticleImage = async (slug, file, category) => {
+  const { data, error } = await supabase.storage
+    .from("article images")
+    .upload(`${category}/${slug}/${file.name}`, file, {
+      cacheControl: "3600",
+      upsert: false, // si quieres sobreescribir ponlo en true
+    });
+
+  if (error) {
+    console.error("Error uploading image:", error.message);
+    return null;
+  }
+
+  return data;
 }

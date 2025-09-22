@@ -4,6 +4,7 @@ import { useArticlesManage } from '@/hooks/useArticlesManage';
 import { useEffect, useState } from 'react';
 import { slugGenerator } from '@/utils/slugGenerator';
 import { useUserStore } from '@/stores/userStore';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateArticleForm = () => {
     const [category, setCategory] = useState('');
@@ -15,6 +16,7 @@ export const CreateArticleForm = () => {
     const { categories, fetchAllCategories } = useCategories();
     const { createArticleHandler } = useArticlesManage();
     const user = useUserStore((s) => s.user);
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -33,8 +35,12 @@ export const CreateArticleForm = () => {
 
         try {
             setLoading(true);
-            await createArticleHandler(data);
+            const { createdData, error } = await createArticleHandler(data);
+            if (error) {
+                setError(error);
+            }
             setLoading(false);
+            navigate(`/upload-images/${createdData[0].id}`);
         } catch (err) {
             setError(err.message);
         } finally {

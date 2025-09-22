@@ -8,11 +8,11 @@ import {Login} from "@/pages/LogIn";
 import { SignUp } from "@/pages/Signup";
 import {Article} from "@/pages/Article";
 import {Author} from "@/pages/Author";
-import {EditArticleForm} from "@/components/EditArticleForm";
 import {Category} from "@/pages/Category";
 import { ForgotPassword } from "@/pages/ForgotPassword";
 import { UpdatePassword } from "@/pages/UpdatePassword";
 import { CreateArticle } from "@/pages/CreateArticle";
+import { UploadImages } from "@/pages/UploadImages";
 import {PrivateRoute} from "@/components/PrivateRoute";
 import {PublicRoute} from "@/components/PublicRoute";
 
@@ -33,6 +33,13 @@ export const routesConfig = [
       <PrivateRoute roles={["author"]}>
         <CreateArticle />
       </PrivateRoute>
+    ),
+  },
+
+  {
+    path: "/upload-images/:articleId",
+    element: (
+        <UploadImages />
     ),
   },
 

@@ -16,7 +16,7 @@ export const useArticlesManage = () => {
 
     const createArticleHandler = async (data) => {
         const { data: createdData, error } = await createArticle(data);
-        return { data: createdData, error }; 
+        return { createdData, error }; 
     }
 
     return { deleteArticleHandler, updateArticleHandler, createArticleHandler };
