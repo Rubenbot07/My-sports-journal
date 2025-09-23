@@ -1,17 +1,17 @@
-import { uploadArticleImage } from "@/services/articlesService"
+import { uploadArticleImage, createMediaArticle } from "@/services/articlesService"
+import { getImgPublicUrl } from "@/services/photoService"
 import { useState } from "react";
 import imageCompression from "browser-image-compression";
 export const useArticleImages = () => {
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    let url = null;
 
-    const uploadStoreImages = async (slug, file, category) => {
+    const uploadStoreImages = async (slug, file, category, articleId, width, height, role) => {
 
         try {
             setLoading(true);
-            setError(null);
             setSuccess(null);
 
             // Validar tipo
@@ -30,17 +30,35 @@ export const useArticleImages = () => {
             // convert and compress
             const compressedFile = await imageCompression(file, options);
 
-            const { data } = await uploadArticleImage(slug, compressedFile, category);
+            const data = await uploadArticleImage(slug, compressedFile, category);
             console.log(data);
-            setSuccess(data);
+            if (data) {
+                const { data: publicData } = await getImgPublicUrl("article images", data.path);
+                url = publicData.publicUrl;                
+            }
+            
+
+            const { createdData, error } = await createMediaArticle({
+                article_id: articleId,
+                url: url,
+                type: "image",
+                role: role,
+                width: width,
+                height: height
+            });
+
+            if (error) throw error;
+            if(!createdData) return;
         } catch (err) {
             console.error(err);
+        }
+        finally {
+            setLoading(false);
         }
     }
 
     return {
         loading,
-        error,
         success,
         uploadStoreImages
     }

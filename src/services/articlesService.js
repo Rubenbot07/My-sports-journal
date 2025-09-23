@@ -82,7 +82,7 @@ export const uploadArticleImage = async (slug, file, category) => {
     .upload(`${category}/${slug}/${file.name}`, file, {
       cacheControl: "3600",
       upsert: false, // si quieres sobreescribir ponlo en true
-    });
+    })
 
   if (error) {
     console.error("Error uploading image:", error.message);
@@ -90,4 +90,13 @@ export const uploadArticleImage = async (slug, file, category) => {
   }
 
   return data;
+}
+
+export const createMediaArticle = async (data) => {
+  const { data: createdData, error } = await supabase
+  .from("media")
+  .insert(data)
+  .select()
+
+  return { data: createdData, error }
 }

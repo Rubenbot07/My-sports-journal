@@ -10,11 +10,12 @@ export const getRequiredSizes = (inputName, setter, e, img) => {
       if (img.width !== required.width || img.height !== required.height) {
         setter((prev) => ({
           ...prev,
-          [inputName]: `❌ Invalid dimensions: ${img.width}x${img.height}. Required: ${required.width}x${required.height}`,
+          [inputName]: `Invalid dimensions, Required: ${required.width}x${required.height}`,
         }));
         e.target.value = ""; // reset input
-        return;
+        return false;
     } else {
         setter((prev) => ({ ...prev, [inputName]: null }));
-      }
+        return true;
+    }
 }

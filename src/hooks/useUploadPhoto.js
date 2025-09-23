@@ -1,7 +1,6 @@
 import { useState } from "react";
 import imageCompression from "browser-image-compression";
-import { getImgPublicUrl } from "@/services/photoService";
-import { uploadPhoto, removePhoto } from "@/services/photoService";
+import { uploadPhoto, removePhoto, getImgPublicUrl } from "@/services/photoService";
 import { updateProfileImage, updateImageInternalPath } from "@/services/profileService";
 import { useUserStore } from "@/stores/userStore";
 
@@ -47,6 +46,8 @@ export function useUploadImage(bucketName = "profile-images") {
         fileName
       );
       setUrl(data);
+
+
 
       if(data.publicUrl) {
         const { data: updateData, error: updateError } = await updateProfileImage({user_id: userId, image: data.publicUrl});

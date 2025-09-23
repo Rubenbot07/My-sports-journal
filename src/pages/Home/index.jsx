@@ -8,6 +8,7 @@ export const Home = () => {
     const { articles } = useArticleStore();
     const { loading } = useArticlesList(12)
     const mainArticle = articles[0];
+    console.log(articles);
     if (loading) {
         return <div>Loading...</div>;
     }

@@ -2,10 +2,27 @@ import { useState } from "react"
 import { renameFile } from "@/utils/renameFile";
 import { getRequiredSizes } from "@/utils/requiredSizes";
 import { useArticleImages } from "@/hooks/useArticleImages";
+import { ArticleHeroBanner } from "@/components/ArticleHeroBanner";
+import { CircleCheck, CircleX } from "lucide-react";
 export const UploadArticleImagesFrom = ({articleId, articleSlug, category}) => {
     const [errors, setErrors] = useState({});
     const [files, setFiles] = useState({});
-    const { loading, error, success, uploadStoreImages } = useArticleImages();
+    const { loading, uploadStoreImages } = useArticleImages();
+    const inputs = [
+      {
+        name: "thumbnail",
+        title: "Thumbnail Image (400x225)"
+      },
+      {
+        name: "cover",
+        title: "Cover Image (1200x675)"
+      },
+      {
+        name: "banner",
+        title: "Banner Image (1920x1080)"
+      }
+
+    ]
     const handleFileChange = (e, inputName) => {
         const file = e.target.files[0];
         let renamedFile = null;
@@ -15,55 +32,54 @@ export const UploadArticleImagesFrom = ({articleId, articleSlug, category}) => {
         img.src = URL.createObjectURL(file);
 
         img.onload = () => {
-        renamedFile = renameFile(file, inputName);
-        setFiles((prev) => ({ ...prev, [inputName]: renamedFile }));
-            
-        getRequiredSizes(inputName, setErrors, e, img);
+          
+          const isValid = getRequiredSizes(inputName, setErrors, e, img);
+          if (!isValid) return;
 
+          renamedFile = renameFile(file, inputName);
+          setFiles((prev) => ({ ...prev, [inputName]: renamedFile }));
 
-        URL.revokeObjectURL(img.src);
-            console.log(errors)
-            console.log(renamedFile)
-            uploadStoreImages(articleSlug, renamedFile, category);
+          URL.revokeObjectURL(img.src);
+          console.log(img.width, img.height, inputName);
+          uploadStoreImages(articleSlug, renamedFile, category, articleId, img.width, img.height, inputName);
         };
-        console.log(success)
-    };
-
+      };
+    
     return (
 
-    <div>
-        <h1>{articleSlug} = {articleId} = {category}</h1>
-      <div>
-        <label htmlFor="thumbnail">Thumbnail (400x225):</label>
-        <input
-          type="file"
-          id="thumbnail"
-          accept="image/webp"
-          onChange={(e) => handleFileChange(e, "thumbnail")}
-        />
-        {errors.thumbnail && <p style={{ color: "red" }}>{errors.thumbnail}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="cover" >Cover (1200x675):</label>
-        <input
-          type="file"
-          id="cover"
-          accept="image/webp"
-          onChange={(e) => handleFileChange(e, "cover")}
-        />
-        {errors.cover && <p style={{ color: "red" }}>{errors.cover}</p>}
-      </div>
-
-      <div>
-        <label>Banner (1920x1080):</label>
-        <input
-          type="file"
-          accept="image/webp"
-          onChange={(e) => handleFileChange(e, "banner")}
-        />
-        {errors.banner && <p style={{ color: "red" }}>{errors.banner}</p>}
-      </div>
-    </div>
+    <section>
+        <ArticleHeroBanner title={'Upload Article Images'} />
+        <form className="flex flex-col gap-8 py-8">
+          {
+            inputs.map((input) => (
+              <div key={input.name} className="flex flex-col gap-3">
+                <div className="flex justify-center w-1/2 mx-auto gap-2 items-center">                  
+                  <input
+                    className="hidden"
+                    type="file"
+                    id={input.name}
+                    accept="image/webp"
+                    disabled={loading}
+                    onChange={(e) => handleFileChange(e, input.name)}
+                  />
+                  <label className="bg-primary text-white px-4 py-2 w-1/2 min-w-72 rounded-full flex justify-between" htmlFor={input.name}>
+                    {input.title}
+                    {files[input.name] && (
+                      <CircleCheck className="text-white" size={25} />
+                    )}
+                  </label>
+                </div>
+                {errors[input.name] && 
+                <div className="text-primary text-sm flex items-center justify-center gap-2">
+                    <CircleX size={25} />
+                    <p>
+                      {errors[input.name]}
+                    </p>
+                </div>}
+              </div>
+            ))
+          }
+        </form>
+    </section>
     )
 }
