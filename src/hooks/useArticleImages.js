@@ -14,12 +14,12 @@ export const useArticleImages = () => {
             setLoading(true);
             setSuccess(null);
 
-            // Validar tipo
+            // type validation
             if (!file.type.startsWith("image/")) {
                 throw new Error("Only image files are allowed");
             }
 
-            // Opciones de compresión
+            // Compress options
             const options = {
                 fileType: "image/webp", 
                 maxSizeMB: 1,           
@@ -34,7 +34,7 @@ export const useArticleImages = () => {
             console.log(data);
             if (data) {
                 const { data: publicData } = await getImgPublicUrl("article images", data.path);
-                url = publicData.publicUrl;                
+                url = publicData.publicUrl;     
             }
             
 
