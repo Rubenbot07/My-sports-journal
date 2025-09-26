@@ -25,6 +25,7 @@ export const ArticleHeroImage = ({ article, title }) => {
         <img
           src={thumb?.url || fallbackUrl}
           alt={title ? "" : article?.title} 
+          fetchPriority='high'
           onLoad={handleImageLoad}
           className="w-full h-full md:object-cover object-fill"
         />
