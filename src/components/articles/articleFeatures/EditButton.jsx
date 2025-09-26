@@ -1,6 +1,6 @@
-import { Modal } from "@/components/Modal";
+import { Modal } from "@/components/ui/Modal";
 import { useState } from "react";
-import { EditArticleForm } from "@/components/EditArticleForm";
+import { EditArticleForm } from "@/components/articles/forms/EditArticleForm";
 export const EditButton = () => {
     const [isOpen, setIsOpen] = useState(false);
     

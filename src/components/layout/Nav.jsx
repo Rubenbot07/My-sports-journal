@@ -1,14 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
-import { ChevronDown } from "lucide-react"
-import { LogOut } from "lucide-react"
-import { UserRoundPlus } from "lucide-react"
 import { useUserStore } from "@/stores/userStore"
 import { useAuthSession } from "@/hooks/useAuthSession"
 import { useNavigate } from "react-router-dom"
-import { CategoriesContainer } from "@/components/CategoriesContainer"
-import { NavOptions } from "@/components/NavOptions"
-import { AuthOptions } from "@/components/AuthOptions"
+import { CategoriesContainer } from "@/components/categories/CategoriesContainer"
+import { NavOptions } from "@/components/layout/NavOptions"
+import { AuthOptions } from "@/components/auth/AuthOptions"
 
 
 export const Nav = () => {

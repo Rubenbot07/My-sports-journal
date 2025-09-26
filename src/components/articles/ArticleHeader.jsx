@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArticleHeroBanner } from '@/components/ArticleHeroBanner';
+import { ArticleHeroBanner } from '@/components/articles/ArticleHeroBanner';
 export const ArticleHeader = ({ article }) => {
     return (
         <header className='flex flex-col gap-8'>

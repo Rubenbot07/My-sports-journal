@@ -1,14 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArticleHandler } from '@/components/ArticleHandler';
-import { CommentContainer } from '@/components/CommentContainer';
-import { ArticleAside } from '@/components/ArticleAside';
+import { ArticleHandler } from '@/components/articles/ArticleHandler';
+import { CommentContainer } from '@/components/comments/CommentContainer';
+import { ArticleAside } from '@/components/articles/ArticleAside';
 import { useArticleId } from '@/hooks/useArticleId';
 import { useArticleStore } from '@/stores/articleStore';
-import { ActionButtonsContainer } from '@/components/ActionButtonsContainer';
+import { ActionButtonsContainer } from '@/components/ui/ActionButtonsContainer';
 import { useUserStore } from '@/stores/userStore';
-import { ArticleHeroImage } from '@/components/ArticleHeroImage';
-import { ArticleHeader } from '@/components/ArticleHeader';
-import { ArticleContent } from '@/components/ArticleContent';
+import { ArticleHeroImage } from '@/components/articles/ArticleHeroImage';
+import { ArticleHeader } from '@/components/articles/ArticleHeader';
+import { ArticleContent } from '@/components/articles/ArticleContent';
 export const Article = () => {
     const user = useUserStore((state) => state.user);
     const roles = useUserStore((state) => state.roles).map(r => r.name);

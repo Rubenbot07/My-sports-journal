@@ -1,5 +1,5 @@
-import { Modal } from '@/components/Modal'
-import { EditProfileForm } from '@/components/EditProfileForm'
+import { Modal } from '@/components/ui/Modal'
+import { EditProfileForm } from '@/components/user/EditProfileForm'
 export const EditButtonContainer = ({ currentUser, isOwner, isOpenEdit, setIsOpenEdit}) => {
         return (
             <section>

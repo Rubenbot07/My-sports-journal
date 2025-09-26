@@ -13,8 +13,8 @@ import { ForgotPassword } from "@/pages/ForgotPassword";
 import { UpdatePassword } from "@/pages/UpdatePassword";
 import { CreateArticle } from "@/pages/CreateArticle";
 import { UploadImages } from "@/pages/UploadImages";
-import {PrivateRoute} from "@/components/PrivateRoute";
-import {PublicRoute} from "@/components/PublicRoute";
+import {PrivateRoute} from "@/components/layout/PrivateRoute";
+import {PublicRoute} from "@/components/auth/PublicRoute";
 
 export const routesConfig = [
   { path: "/", element: <Home /> },

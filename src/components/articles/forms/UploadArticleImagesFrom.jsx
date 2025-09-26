@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { renameFile } from "@/utils/renameFile";
 import { getRequiredSizes } from "@/utils/requiredSizes";
 import { useArticleImages } from "@/hooks/useArticleImages";
-import { ArticleHeroBanner } from "@/components/ArticleHeroBanner";
+import { ArticleHeroBanner } from "@/components/articles/ArticleHeroBanner";
 import { CircleCheck, CircleX, ListCheck } from "lucide-react";
 export const UploadArticleImagesFrom = ({articleId, articleSlug, category}) => {
     const [errors, setErrors] = useState({});

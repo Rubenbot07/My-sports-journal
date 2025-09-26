@@ -1,10 +1,9 @@
 import { useParams, Link } from "react-router-dom"
-import { ArticleOfCategories } from "@/components/ArticleOfCategories"
+import { ArticleOfCategories } from "@/components/articles/ArticleOfCategories"
 import { useCategories } from "@/hooks/useCategories";
 import { useEffect, useState } from "react";
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
-import { ArticleHeroBanner } from "@/components/ArticleHeroBanner";
-import { ThumbnailContainer } from "@/components/thumbnailContainer";
+import { MarkdownRenderer } from "@/components/ui/MarkdownRenderer";
+import { ArticleHeroBanner } from "@/components/articles/ArticleHeroBanner";
 export const Category = () => {
     const { category } = useParams();
     const { loading, error, fetchCategoriesBySlug } = useCategories();

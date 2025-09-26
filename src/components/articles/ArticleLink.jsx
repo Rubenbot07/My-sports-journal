@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ThumbnailContainer } from './thumbnailContainer'
+import { ThumbnailContainer } from '../ui/thumbnailContainer'
 export const ArticleLink = ({ article, isThird }) => {
     const cover = article?.media.find((img) => img.role === "cover");
     const thumb = article?.media.find((img) => img.role === "thumbnail");

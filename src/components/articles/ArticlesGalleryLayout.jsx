@@ -1,5 +1,5 @@
-import { ArticleOfCategories } from '@/components/ArticleOfCategories';
-import { ArticleHeroBanner } from '@/components/ArticleHeroBanner';
+import { ArticleOfCategories } from '@/components/articles/ArticleOfCategories';
+import { ArticleHeroBanner } from '@/components/articles/ArticleHeroBanner';
 export const ArticlesGalleryLayout = ({ title, articles}) => {
     const isSingleArticle = articles.length === 1;
     return (

@@ -1,7 +1,7 @@
 import { useUserStore } from '@/stores/userStore';
 import { useComments } from '@/hooks/useComments';
 import { Link, useLocation } from 'react-router-dom';
-import { Comment } from '@/components/Comment';
+import { Comment } from '@/components/comments/Comment';
 export const CommentContainer = ({ articleId }) => {
     const { comments, loading, error, handleComment, handleDeleteComment, handleUpdateComment } = useComments(articleId);
     const user = useUserStore((state) => state.user);

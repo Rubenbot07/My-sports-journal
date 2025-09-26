@@ -1,9 +1,9 @@
-import { ArticleLink } from '../../components/ArticleLink';
-import { ArticleAside } from '../../components/ArticleAside';
+import { ArticleLink } from '@/components/articles/ArticleLink';
+import { ArticleAside } from '@/components/articles/ArticleAside';
 import { Link } from 'react-router-dom';
 import { useArticleStore } from '@/stores/articleStore';
 import { useArticlesList } from '@/hooks/useArticlesList';
-import { ArticleHeroImage } from '@/components/ArticleHeroImage';
+import { ArticleHeroImage } from '@/components/articles/ArticleHeroImage';
 export const Home = () => {
     const { articles } = useArticleStore();
     const { loading } = useArticlesList(12)

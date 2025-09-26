@@ -1,4 +1,4 @@
-import { ArticlesGalleryLayout } from "../../components/ArticlesGalleryLayout"
+import { ArticlesGalleryLayout } from "@/components/articles/ArticlesGalleryLayout"
 import { useBookmarks } from "@/hooks/useBookmarks"
 import { useUserStore } from "@/stores/userStore"
 import { useEffect, useState } from "react"

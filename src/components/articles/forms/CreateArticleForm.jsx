@@ -1,4 +1,4 @@
-import { ArticleHeroBanner } from '@/components/ArticleHeroBanner';
+import { ArticleHeroBanner } from '@/components/articles/ArticleHeroBanner';
 import { useCategories } from '@/hooks/useCategories';
 import { useArticlesManage } from '@/hooks/useArticlesManage';
 import { useEffect, useState } from 'react';

@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from "@/components/ForgotPasswordForm"
-import { AuthLayout } from "@/components/AuthLayout"
+import { ForgotPasswordForm } from "@/components/auth/ForgotPasswordForm"
+import { AuthLayout } from "@/components/layout/AuthLayout"
 
 export const ForgotPassword = () => {
     return (

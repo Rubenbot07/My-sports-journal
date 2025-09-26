@@ -2,9 +2,9 @@ import { useUserStore } from '@/stores/userStore'
 import { useProfile } from '@/hooks/useProfile'
 import { useParams } from 'react-router'
 import { useState} from 'react'
-import { UserAvatarContainer } from '@/components/UserAvatarContainer'
-import { UserInfoContainer } from '@/components/UserInfoContainer'
-import { EditButtonContainer } from '@/components/EditButtonContainer'
+import { UserAvatarContainer } from '@/components/user/UserAvatarContainer'
+import { UserInfoContainer } from '@/components/user/UserInfoContainer'
+import { EditButtonContainer } from '@/components/articles/articleFeatures/EditButtonContainer'
 export const Profile = () => {
     const { user, roles } = useUserStore()
     const { userEmail } = useParams();

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { UploadArticleImagesFrom } from "@/components/UploadArticleImagesFrom"
+import { UploadArticleImagesFrom } from "@/components/articles/forms/UploadArticleImagesFrom"
 import { useArticleId } from "@/hooks/useArticleId"
 import { useArticleStore } from "@/stores/articleStore"
 export const UploadImages = () => {

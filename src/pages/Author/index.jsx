@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useAuthors } from '@/hooks/useAuthors';
-import { ArticlesGalleryLayout } from '@/components/ArticlesGalleryLayout'
+import { ArticlesGalleryLayout } from '@/components/articles/ArticlesGalleryLayout'
 export const Author = () => {
     const { authorId } = useParams();
     const id = authorId.split('|')[0];

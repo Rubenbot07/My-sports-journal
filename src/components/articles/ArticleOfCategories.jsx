@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ThumbnailContainer } from '@/components/thumbnailContainer'
+import { ThumbnailContainer } from '@/components/ui/thumbnailContainer'
 export const ArticleOfCategories = ({ article, isSingle }) => {
     return (
         <Link to={`/articles/${article.id}`} >

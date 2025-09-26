@@ -1,4 +1,4 @@
-import { ArticlesGalleryLayout } from '../../components/ArticlesGalleryLayout';
+import { ArticlesGalleryLayout } from '@/components/articles/ArticlesGalleryLayout';
 import { getMostBookmarkedArticles } from '@/services/articlesService';
 import { useEffect, useState } from 'react';
 export const MostPopular = () => {

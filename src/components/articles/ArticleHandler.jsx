@@ -1,7 +1,7 @@
 import { useArticlesManage } from "@/hooks/useArticlesManage";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { EditButton } from "@/components/EditButton";
+import { EditButton } from "@/components/articles/articleFeatures/EditButton";
 export const ArticleHandler = ({ articleId, roles, userId, setRemoveArticle }) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);

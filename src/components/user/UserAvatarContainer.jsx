@@ -1,6 +1,6 @@
 import { Pencil } from 'lucide-react'
-import { UploadPhotoForm } from '@/components/UploadPhotoForm'
-import { Modal } from '@/components/Modal'
+import { UploadPhotoForm } from '@/components/user/UploadPhotoForm'
+import { Modal } from '@/components/ui/Modal'
 
 export const UserAvatarContainer = ({ currentUser, isOwner, isOpenPhoto, setIsOpenPhoto }) => {
     return (
