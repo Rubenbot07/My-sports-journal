@@ -1,36 +1,34 @@
 import { NavLink } from "react-router-dom"
 export const NavOptions = ({ authUser, roles }) => {
+    const navItems = [
+        { to: "/", label: "Home" },
+        { to: "/about", label: "About" },
+        { to: "/most-popular", label: "Most Popular" },
+        { to: "/favorites", label: "Favorites" },
+    ];
+
+    // Opciones condicionales según authUser y roles
+    if (authUser) {
+        navItems.push({ to: `/profile/${authUser.email}`, label: "Profile" });
+    }
+
+    if (roles.includes("author")) {
+        navItems.push({ to: "/create-article", label: "Create Article", ariaLabel: "Add article" });
+    }
+
     return (
         <>
-            <li className="hover:text-primary">
-                <NavLink to="/" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Home</NavLink>
-            </li>
-            <li className="hover:text-primary">
-                <NavLink to="/about" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>About</NavLink>
-            </li>
-            <li className="hover:text-primary">
-                <NavLink to="/most-popular" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Most Popular</NavLink>
-            </li>
-            {
-                authUser && (
-                    <li className="hover:text-primary">
-                        <NavLink to={`/profile/${authUser.email}`} className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Profile</NavLink>
-                    </li>
-                )
-            }
-            <li className="hover:text-primary">
-                <NavLink to="/favorites" className={({ isActive }) => isActive ? 'border-b-2 border-primary' : ''}>Favorites</NavLink>
-            </li>
-            {
-                roles.includes('author') && (
-                    <li
-                        aria-label="Add article"
-                        className="hover:text-primary"
+            {navItems.map(({ to, label, ariaLabel }) => (
+                <li key={to} className="hover:text-primary">
+                    <NavLink
+                        to={to}
+                        aria-label={ariaLabel}
+                        className={({ isActive }) => isActive ? "border-b-2 border-primary" : ""}
                     >
-                        <NavLink to="/create-article">Create Article</NavLink>
-                    </li>
-                )
-            }
+                        {label}
+                    </NavLink>
+                </li>
+            ))}
         </>
-    )
-}
+    );
+};
