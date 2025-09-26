@@ -69,7 +69,7 @@ export const Nav = () => {
                         </button>
                     <div className="w-28 h-3.5 flex items-center">
                         <NavLink to="/">
-                            <img aria-label="Sports Journal" className="overflow-hidden" src='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/sportsJournalLogo.png' alt="Sports Journal Logo" />
+                            <img fetchPriority="high" aria-label="Sports Journal" className="overflow-hidden" src='https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/sportsJournalLogo.png' alt="Sports Journal Logo" />
                         </NavLink>
                     </div>
                 </li>
