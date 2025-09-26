@@ -5,7 +5,7 @@ export const PrivateRoute = ({ children, roles }) => {
     const location = useLocation()
     const user = useUserStore((state) => state.user);
     const userRoles = useUserStore((state) => state.roles).map(r => r.name);
-    const hasRole = userRoles.some(role => roles.includes(role));
+    const hasRole = userRoles.some(role => roles?.includes(role));
     
 
     if (!user) {
