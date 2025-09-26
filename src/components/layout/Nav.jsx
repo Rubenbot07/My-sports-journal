@@ -79,7 +79,7 @@ export const Nav = () => {
             {/* Menú principal */}
             <ul
                 id="mobile-menu"
-                className={`z-50 gap-8 p-4 w-1/2 rounded-br-2xl absolute top-14 transition-transform duration-300 ease-in ${
+                className={`z-50 gap-8 flex-col p-4 w-1/2 rounded-br-2xl absolute top-14 transition-transform duration-300 ease-in ${
                     isMenuOpen ? "flex translate-x-0" : "flex -translate-x-full"
                 } md:relative md:top-0 md:flex md:translate-x-0 md:flex-row md:items-center bg-white shadow-md font-semibold md:gap-4 md:w-full md:rounded-b-none`}
             >

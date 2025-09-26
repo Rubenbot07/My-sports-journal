@@ -7,15 +7,15 @@ export const EditCommentForm = ({ handlerFunction, comment}) => {
     }
     return (
         <form
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit}
             className="flex flex-col gap-2"
-            onChange={(e) => setBody(e.target.value)}
         >
             <input
                 className="border border-gray-400 rounded-xl p-2"
                 type="text"
-                defaultValue={comment.body}
-            />    
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+            />
             <button
                 type="submit"
                 className="bg-primary text-white p-1 rounded-lg w-full max-w-40 mx-auto"
