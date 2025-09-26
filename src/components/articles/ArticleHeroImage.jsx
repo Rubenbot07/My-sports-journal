@@ -5,6 +5,8 @@ export const ArticleHeroImage = ({ article, title }) => {
   const thumb = article?.media.find((img) => img.role === "thumbnail");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
+  const fallbackUrl = 'https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/imageNotFound.png'; // Default image URL
+
   const handleImageLoad = () => {
     setIsImageLoaded(true);
   };
@@ -17,11 +19,11 @@ export const ArticleHeroImage = ({ article, title }) => {
       aria-busy={!isImageLoaded}
     >
       <picture>
-        <source media="(min-width: 1024px)" srcSet={banner?.url} />
-        <source media="(min-width: 640px)" srcSet={cover?.url} />
-        <source media="(max-width: 639px)" srcSet={thumb?.url} />
+        <source media="(min-width: 1024px)" srcSet={banner?.url || fallbackUrl} />
+        <source media="(min-width: 640px)" srcSet={cover?.url || fallbackUrl} />
+        <source media="(max-width: 639px)" srcSet={thumb?.url || fallbackUrl} />
         <img
-          src={thumb?.url}
+          src={thumb?.url || fallbackUrl}
           alt={title ? "" : article?.title} 
           onLoad={handleImageLoad}
           className="w-full h-full md:object-cover object-fill"

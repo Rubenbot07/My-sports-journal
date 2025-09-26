@@ -4,6 +4,8 @@ export const ArticleLink = ({ article, isThird }) => {
   const cover = article?.media.find((img) => img.role === "cover");
   const thumb = article?.media.find((img) => img.role === "thumbnail");
 
+  const fallbackUrl = 'https://pqbzzgeczhqphepwilwv.supabase.co/storage/v1/object/public/company%20images/imageNotFound.png'; // Cambia esto por una imagen por defecto
+
   return (
     <article
       className={`relative border border-gray-300 w-full h-full flex flex-col bg-gray-200 rounded-lg shadow-md text-start hover:bg-gray-300 
@@ -16,11 +18,11 @@ export const ArticleLink = ({ article, isThird }) => {
             ${isThird ? 'md:h-[400px]' : ''} transition-all duration-500`}
         >
           <picture>
-            <source media="(min-width: 640px)" srcSet={cover?.url} />
-            <source media="(max-width: 639px)" srcSet={thumb?.url} />
+            <source media="(min-width: 640px)" srcSet={cover?.url || fallbackUrl} />
+            <source media="(max-width: 639px)" srcSet={thumb?.url || fallbackUrl} />
             <img
               loading="lazy"
-              src={thumb?.url}
+              src={thumb?.url || fallbackUrl}
               className="w-full h-full object-top object-cover hover:scale-105 transition-all duration-500"
               alt="" 
             />

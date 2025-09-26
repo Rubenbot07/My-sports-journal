@@ -84,7 +84,7 @@ export const UploadArticleImagesFrom = ({ articleId, articleSlug, category }) =>
         ))}
 
         {/* Mensaje de estado accesible */}
-        <div role="status" aria-live="polite" className="text-center">
+        <div role="status" aria-live="polite" className="text-center flex flex-col gap-4">
           {Object.keys(files).length >= 3 && (
             <>
               <div className="text-primary text-sm flex items-center justify-center gap-2">

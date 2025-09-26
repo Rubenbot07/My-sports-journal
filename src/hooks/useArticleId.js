@@ -14,7 +14,6 @@ export const useArticleId = (id, status) => {
     const fetch = async () => {
       try {
         const data = await getArticleById(id, status);
-        console.log(data);
         setArticle(data);
       } catch (err) {
         console.error("Failed to fetch article:", err);
